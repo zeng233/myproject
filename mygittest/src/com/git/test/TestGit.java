@@ -10,5 +10,5 @@ package com.git.test;
  * @version 1.0
  */
 public class TestGit {
-
+	
 }
