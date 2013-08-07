@@ -10,6 +10,7 @@ package com.jse.block.init;
  * @version 1.0
  */
 public class TestInit { 
+	//父类和子类都有静态变量，初始化
 	private String s = "一般常量";
 	
 	private static String CONSANT = "静态常量";
