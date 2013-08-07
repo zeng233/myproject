@@ -19,7 +19,7 @@ public class TestFor {
 		int count = 0;
 		//
 		for (;;) {
-			System.out.println(1);
+			System.out.println(1); 
 			count++;
 			if (count > 10) break;
 		}
