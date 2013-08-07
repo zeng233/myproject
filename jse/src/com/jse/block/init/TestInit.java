@@ -9,7 +9,7 @@ package com.jse.block.init;
  *
  * @version 1.0
  */
-public class TestInit {
+public class TestInit { 
 	private String s = "一般常量";
 	
 	private static String CONSANT = "静态常量";
