@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	id="WebApp_ID" version="3.0">
+	<display-name>amyweb</display-name>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+
+
+	<!-- 参考文档 -->
+	<!--  
+	<listener>
+		<listener-class>
+			org.apache.commons.fileupload.servlet.FileCleanerCleanup</listener-class>
+	</listener>
+	-->
+	
+	<!-- 配置过滤servlet
+	<filter>
+		<filter-name>test</filter-name>
+		<filter-class>com.myweb.test.TestFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>test</filter-name>
+		<servlet-name>test</servlet-name>
+	</filter-mapping>
+	 -->
+	 
+	 <!-- 参考规范3.1 Deployment Descriptor  -->
+	 <session-config>
+	 	<session-timeout>1</session-timeout>
+	 	<cookie-config>
+	 		<name>test</name>
+	 	</cookie-config>
+	 	<!-- <tracking-mode>0</tracking-mode> -->
+	 </session-config>
+	 <!-- 参考规范3.1 10.9 Error Handling -->
+	 <!-- <error-page>
+	 	<error-code>404</error-code>
+	 	<location>/pages/errors/404.jsp</location>
+	 </error-page> -->
+	 <!-- <error-page>
+	 	<error-code>500</error-code>
+	 	<location>/pages/errors/500.jsp</location>
+	 </error-page> -->
+	 
+	 
+	<servlet>
+		<servlet-name>user</servlet-name>
+		<servlet-class>com.myweb.servlet.UserServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>user</servlet-name>
+		<url-pattern>/userServlet</url-pattern><!-- servlet路径 -->
+	</servlet-mapping>
+	
+	<!-- 注册 -->
+	<!-- <servlet>
+		<servlet-name>registServlet</servlet-name>
+		<servlet-class>com.myweb.servlet.RegistServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>registServlet</servlet-name>
+		<url-pattern>/registServlet</url-pattern>
+	</servlet-mapping> -->
+	
+	<!-- 处理静态资源，tomcat默认不能直接访问静态资源，里面有个defaultServlet -->
+	<!-- 如果url在web.xml中找到相应的servlet，那么就会去tomcat配置文件去找默认的servlet，
+  	在tomcat的conf/web.xml中有个default的servlet为org.apache.catalina.servlets.DefaultServlet，参考tomcat的API,
+   -->
+   <!-- <servlet-mapping>
+   		<servlet-name>default</servlet-name>
+   		<url-pattern>static/*</url-pattern>
+   </servlet-mapping> -->
+   
+ 	<servlet-mapping>
+		<servlet-name>default</servlet-name>
+		<url-pattern>*.css</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>default</servlet-name>
+		<url-pattern>*.gif</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>default</servlet-name>
+		<url-pattern>*.jpg</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>default</servlet-name>
+		<url-pattern>*.png</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>default</servlet-name>
+		<url-pattern>*.js</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>default</servlet-name>
+		<url-pattern>*.htm</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>default</servlet-name>
+		<url-pattern>*.html</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>default</servlet-name>
+		<url-pattern>*.ico</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>default</servlet-name>
+		<url-pattern>*.txt</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>default</servlet-name>
+		<url-pattern>*.ftl</url-pattern>
+	</servlet-mapping>
+</web-app>
