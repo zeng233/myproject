@@ -35,7 +35,25 @@ public class TestString {
 		
 //		t.testFormat();
 		
-		t.testRex();
+//		t.testRex();
+		t.testEquals();
+		
+		
+	}
+	
+	public void testEquals() {
+		String s1="ab";
+		String s2="c";
+		String s3 = s1+s2;
+		
+		String s4="abc";
+		
+		final String ss1="ab";
+		final String ss2="c";
+		String ss = ss1+ss2;
+		System.out.println(ss1+ss2);
+		System.out.println(s3==s4);
+		System.out.println((ss1+ss2)=="abc");
 	}
 	
 	
