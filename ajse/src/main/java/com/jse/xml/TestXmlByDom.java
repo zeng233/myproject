@@ -19,10 +19,18 @@ import org.w3c.dom.NodeList;
  */
 public class TestXmlByDom {
 	
+	public static void main(String[] args) throws Exception {
+		String path = "E:/juno/winshare/ajse/src/main/resources/test/person.xml";
+		
+		TestXmlByDom t = new TestXmlByDom();
+		
+		t.parseXml(path);
+	}
+	
 	public void parseXml(String path) throws Exception {
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder documentBuilder = factory.newDocumentBuilder();
-		Document document = documentBuilder.parse(new File("E:/juno/winshare/ajse/src/main/resources/test/person.xml"));
+		Document document = documentBuilder.parse(new File(path));
 		
 		NodeList nodeList = document.getChildNodes();
 	}
