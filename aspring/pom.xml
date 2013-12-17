@@ -151,12 +151,27 @@
 			<version>4.2.0.Final</version>
 		</dependency>
 
+		<!-- web相关 -->
 		<dependency>
-			<groupId>joda-time</groupId>
-			<artifactId>joda-time</artifactId>
-			<version>2.3</version>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.1.0</version>
 		</dependency>
-
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>javax.servlet.jsp-api</artifactId>
+			<version>2.3.1</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet.jsp.jstl</groupId>
+			<artifactId>javax.servlet.jsp.jstl-api</artifactId>
+			<version>1.2.1</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.el</groupId>
+			<artifactId>el-api</artifactId>
+			<version>2.2</version>
+		</dependency>
 
 		<!-- testing -->
 		<dependency>
@@ -164,5 +179,7 @@
 			<artifactId>junit</artifactId>
 			<version>4.10</version>
 		</dependency>
+		
+		<!-- 其他常用工具包 -->
 	</dependencies>
 </project>
