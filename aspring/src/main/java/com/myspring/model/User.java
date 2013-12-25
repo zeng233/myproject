@@ -1,5 +1,14 @@
 package com.myspring.model;
 
+import java.io.Serializable;
+
+import javax.annotation.Generated;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  * @description: TODO
  * 
@@ -9,7 +18,17 @@ package com.myspring.model;
  * 
  * @version 1.0
  */
-public class User {
+@Entity
+@Table(name="t_user")
+public class User implements Serializable {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2217883782925757847L;
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;
 	private String userName;
 	private String password;

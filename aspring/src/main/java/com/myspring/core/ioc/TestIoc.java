@@ -1,5 +1,11 @@
 package com.myspring.core.ioc;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.orm.hibernate4.HibernateTransactionManager;
+import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
+
 /**
  * @description: TODO
  *
@@ -10,5 +16,16 @@ package com.myspring.core.ioc;
  * @version 1.0
  */
 public class TestIoc {
-
+	public static void main(String[] args) {
+		
+		ApplicationContext context = new ClassPathXmlApplicationContext("spring/application-config.xml");
+		//实现了FactoryBean接口，实用getBean方法不能直接获取对象，参考5.8（Customizing instantiation logic with a FactoryBean）
+		System.out.println(context.getBean("&sessionFactory", LocalSessionFactoryBean.class)); //不能直接获取LocalSessionFactoryBean（抛异常）
+		
+		HibernateTransactionManager t = context.getBean("transactionManager", HibernateTransactionManager.class);
+		System.out.println(t.getSessionFactory());
+		
+		JdbcTemplate jdbcTemplate = context.getBean("jdbcTemplate", JdbcTemplate.class);
+		System.out.println(jdbcTemplate);
+	}
 }
