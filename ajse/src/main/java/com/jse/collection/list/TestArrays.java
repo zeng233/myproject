@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.apache.commons.collections.CollectionUtils;
+
 /**
  * @description: TODO
  *
@@ -17,7 +19,12 @@ import java.util.List;
 public class TestArrays {
 	public static void main(String[] args) {
 		TestArrays t = new TestArrays();
-		t.testAsList();
+//		t.testAsList();
+		
+		
+		
+		List<String> list = new ArrayList<>();
+		System.out.println(CollectionUtils.isNotEmpty(list));
 	}
 	
 	/**
