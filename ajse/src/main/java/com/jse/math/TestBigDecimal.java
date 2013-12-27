@@ -15,8 +15,17 @@ import java.math.BigDecimal;
 public class TestBigDecimal {
 	public static void main(String[] args) {
 		TestBigDecimal test = new TestBigDecimal();
-		test.testConstruct();
+//		test.testConstruct();
+		test.testDivide();
 		
+	}
+	
+	public void testDivide() {
+		BigDecimal bd = new BigDecimal("21.8");
+		BigDecimal bd1 = new BigDecimal("3");
+		//divide第二个参数表示小数点后的位数
+		BigDecimal result = bd.divide(bd1, 5, BigDecimal.ROUND_HALF_UP);
+		System.out.println(result);
 	}
 	
 	
