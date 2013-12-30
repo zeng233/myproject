@@ -65,7 +65,7 @@
     </bean>
     <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>
     
-    <!-- 默认注入 id为dataSource的数据源 TODO-->
+    <!-- 默认注入 id为dataSource的数据源,如果beans标签的属性default-autowire设置为byName，spring会自动找与改beans匹配的属性-->
     <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
     	<property name="dataSource" ref="dataSource"/>
     </bean>
