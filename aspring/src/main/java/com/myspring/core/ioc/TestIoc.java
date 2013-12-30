@@ -27,5 +27,11 @@ public class TestIoc {
 		
 		JdbcTemplate jdbcTemplate = context.getBean("jdbcTemplate", JdbcTemplate.class);
 		System.out.println(jdbcTemplate);
+		
+		System.out.println("================容器中注入的Beans=====================");
+		String[] names = context.getBeanDefinitionNames();
+		for (int i=0; i<names.length; i++) {
+			System.out.println(names[i]);
+		}
 	}
 }

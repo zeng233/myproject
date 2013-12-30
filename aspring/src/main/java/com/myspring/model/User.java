@@ -20,7 +20,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="t_user")
-public class User implements Serializable {
+public class User extends AbstractEntity {
 	
 	/**
 	 * 
