@@ -10,7 +10,8 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"
+		default-autowire="byName"><!-- 按照属性默认装配 ，如果容器中bean的id与一个bean的属性一样，那个bean就不用写ref属性-->
 
 	<!-- 5.10 Classpath scanning and managed components  -->
 	<context:component-scan base-package="com.myspring.*" />
@@ -64,6 +65,8 @@
     </bean>
     <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>
     
-    <!-- 默认注入 id为dataSource的数据源-->
-    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate" />
+    <!-- 默认注入 id为dataSource的数据源 TODO-->
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+    	<property name="dataSource" ref="dataSource"/>
+    </bean>
 </beans>
