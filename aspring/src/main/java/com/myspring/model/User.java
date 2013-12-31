@@ -1,5 +1,7 @@
 package com.myspring.model;
 
+import java.beans.ConstructorProperties;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -30,6 +32,15 @@ public class User extends AbstractEntity {
 	private String userName;
 	private String password;
 
+	
+	public User(){}
+	
+	@ConstructorProperties(value={"1","zeng"})
+	public User(Integer id, String userName) {
+		this.id = id;
+		this.userName = userName;
+	}
+	
 	public Integer getId() {
 		return id;
 	}
