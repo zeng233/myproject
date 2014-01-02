@@ -8,14 +8,13 @@ import java.util.Set;
 /**
  * @description: 注入各种集合，property属性里面分别使用<list>,<set>,<map>,<props>标签
  * 
- * <bean id="collection" class="com.myspring.model.CollectionObject">
- *  <property name="list">
- *			<list>
- *				<value>lista</value>
- *				<value>listb</value>
- *			</list>
- *		</property>
- *	</bean>
+ *               xmlns:p="http://www.springframework.org/schema/p"
+ *               xmlns:c="http://www.springframework.org/schema/c"构造函数简化注入类似p命名空间
+ * 
+ *               <bean id="collection"
+ *               class="com.myspring.model.CollectionObject"> <property
+ *               name="list"> <list> <value>lista</value> <value>listb</value>
+ *               </list> </property> </bean>
  * 
  * @createtime: 2014-1-2 上午11:00:58
  * 
@@ -30,6 +29,15 @@ public class CollectionObject extends AbstractEntity {
 	 * 
 	 */
 	private static final long serialVersionUID = 7490994719355292374L;
+
+	private String name;
+
+	public CollectionObject() {
+	}
+
+	public CollectionObject(String name) {
+		this.name = name;
+	}
 
 	private List<String> list;
 	private Set<String> set;
@@ -66,6 +74,14 @@ public class CollectionObject extends AbstractEntity {
 
 	public void setProperties(Properties properties) {
 		this.properties = properties;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 }
