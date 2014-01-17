@@ -1,7 +1,11 @@
 package com.jse.lang;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
+
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * @description: 值传递、引用传递
@@ -39,6 +43,22 @@ public class TestString {
 		t.testEquals();
 		
 		
+		t.joinString();
+	}
+	
+	/**
+	 * 测试字符串连接
+	 */
+	public void joinString() {
+		List<Integer> list =new ArrayList<>();
+		Collections.addAll(list, 1,2,3,4);
+		String s = StringUtils.join(list, ",");
+		System.out.println("字符串连接：" + s);
+		
+		List<String> ss = new ArrayList<>();
+//		Collections.addAll(ss, "a","b","c","d");
+		String sql = "in('" + StringUtils.join(ss, "','") + "')";
+		System.out.println("SQL:" + sql);
 	}
 	
 	public void testEquals() {
@@ -55,6 +75,7 @@ public class TestString {
 		System.out.println(s3==s4);
 		System.out.println((ss1+ss2)=="abc");
 	}
+	
 	
 	
 	public void testSort(String s) {

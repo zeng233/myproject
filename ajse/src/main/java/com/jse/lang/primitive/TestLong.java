@@ -15,5 +15,11 @@ public class TestLong {
 		Long num = 33L;
 		String s = num + "zzz";
 		System.out.println(s);
+		
+		Long psid = 1200742753L;
+		
+		if (psid == 1200742753L) {
+			System.out.println("true");
+		}
 	}
 }
