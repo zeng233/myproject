@@ -9,7 +9,7 @@ package com.jse.block.init;
  *
  * @version 1.0
  */
-public class TestInit {
+public class TestInit extends SuperObject {
 	private String s = "一般常量";
 	
 	private static String CONSANT = "静态常量";
@@ -19,11 +19,11 @@ public class TestInit {
 	}
 	
 	static {
-		System.out.println("静态代码块");
+		System.out.println("子类静态代码块");
 	}
 	
 	public TestInit() {
-		System.out.println("初始化函数");
+		System.out.println("初始化构造函数");
 	}
 	
 	public static void main(String[] args) {
