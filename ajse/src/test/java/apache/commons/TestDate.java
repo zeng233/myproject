@@ -24,7 +24,7 @@ public class TestDate {
 		Date date = DateUtils.parseDate(sdate, DATE_TIME_FORMAT);
 		Date date1 = DateUtils.parseDateStrictly(sdate, DATE_TIME_FORMAT);
 		Date date2 = DateUtils.addHours(new Date(), -2);
-//		System.out.println(date);
+		System.out.println(date);
 		System.out.println(date2);
 	}
 }
