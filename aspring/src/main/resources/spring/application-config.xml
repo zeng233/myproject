@@ -47,4 +47,9 @@
 	
 	<bean id="singleton" class="com.myspring.model.Singleton" scope="singleton"/>
 	<bean id="prototype" class="com.myspring.model.Prototype" scope="prototype"/>
+	
+	
+	<!-- 自定义bean -->
+	<bean id="myInitBean"  class="com.myspring.core.ioc.bean.MyInitBean"></bean>
+	<bean id="initBeanInXml" class="com.myspring.core.ioc.bean.InitBeanInXml" init-method="myInit"></bean>
 </beans>
