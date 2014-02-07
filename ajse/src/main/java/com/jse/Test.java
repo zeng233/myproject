@@ -1,5 +1,9 @@
 package com.jse;
 
+import java.util.List;
+
+import org.apache.commons.collections.CollectionUtils;
+
 /**
  * @description: TODO
  *
@@ -11,12 +15,24 @@ package com.jse;
  */
 
 public class Test {
+	private int size;
 	public static void main(String[] args) {
-		if (400%200 == 0) {
-//			System.out.println(11);
-		}
+		Test t = new Test();
+		List<String> list = null;
+		CollectionUtils.isNotEmpty(list);
 		
-		boolean b=true;
-		System.out.println(b);
+		t.test1(t);
+		System.out.println(t.getSize());
+	}
+	
+	public void test1(Test t) {
+		t.test(size++);
+	}
+	
+	public void test(int size) {
+	}
+	
+	public int getSize() {
+		return size;
 	}
 }
