@@ -1,3 +1,4 @@
+// foo:类似于java for循环中的标记
 var x=1;
 foo:{
     x=2;
