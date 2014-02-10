@@ -19,6 +19,8 @@ import java.util.Set;
 public class TestHashMap {
 	public static void main(String[] args) {
 		Map<String, Object> map = new HashMap<>();
+		map.put("1", null);
+		map.put("1", "11111");
 		map.put("1", "a");
 		map.put("2", "b");
 		map.put("3", "c");
@@ -37,8 +39,8 @@ public class TestHashMap {
 	public void loopMap(Map<String, Object> map) {
 		if (map != null) {
 			//for循环遍历map
+			System.out.println("=================Map.Enty========================");
 			for (Entry<String, Object> entry : map.entrySet()) {
-				System.out.println("Map.Enty========================");
 				System.out.println("key: " + entry.getKey() + ", value: " + entry.getValue());
 			}
 			
@@ -48,12 +50,23 @@ public class TestHashMap {
 				System.out.println("key: " + key + ", value: " + map.get(key));
 			}
 			
+			
+			System.out.println("=================Iterator遍历===================");
+			Iterator<Map.Entry<String, Object>> iterator = map.entrySet().iterator();
+			while (iterator.hasNext()) {
+				Map.Entry<String, Object> entry = iterator.next();
+				System.out.println("key: " + entry.getKey() + ", value: " + entry.getValue());
+			}
+			
+			
 			System.out.println("===============直接遍历values=================");
 			Collection<Object> collection = map.values();
 			Iterator<Object> ite = collection.iterator();
 			while(ite.hasNext()) {
 				System.out.println("value: " + ite.next());
 			}
+			
+			
 		}
 	}
 }
