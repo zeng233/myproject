@@ -40,11 +40,19 @@ public class TestString {
 //		t.testFormat();
 		
 //		t.testRex();
-		t.testEquals();
+//		t.testEquals();
 		
-		
+		t.testContains();
 		t.joinString();
 	}
+	
+	public void testContains() {
+		String s = "A-";
+		if (s.contains("A")) {
+			System.out.println(true);
+		}
+	}
+	
 	
 	/**
 	 * 测试字符串连接
