@@ -1,7 +1,12 @@
 package com.myspring.core.ioc;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 /**
  * @description: TODO
@@ -13,8 +18,7 @@ import org.springframework.context.ApplicationContext;
  * @version 1.0
  */
 public class TestIocByAnnotation {
-	@Autowired
-	private ApplicationContext cxt;
+	private static ApplicationContext context = new ClassPathXmlApplicationContext("spring/application-config.xml");
 	
 	public static void main(String[] args) {
 		TestIocByAnnotation t = new TestIocByAnnotation();
@@ -22,6 +26,9 @@ public class TestIocByAnnotation {
 	}
 	
 	public void getCxt() {
-		System.out.println(cxt);
+		Map<String, Object> map = context.getBeansWithAnnotation(Service.class);
+		for (Map.Entry<String, Object> entry : map.entrySet()) {
+			System.out.println("key : " + entry.getKey() + ", value : " + entry.getValue());
+		}
 	}
 }
