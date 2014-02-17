@@ -3,6 +3,8 @@ package com.jse;
 import java.util.List;
 
 import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 /**
  * @description: TODO
@@ -15,7 +17,9 @@ import org.apache.commons.collections.CollectionUtils;
  */
 
 public class Test {
+	private static final Log log = LogFactory.getLog(Test.class);
 	private int size;
+	
 	public static void main(String[] args) {
 		Test t = new Test();
 		List<String> list = null;
@@ -23,6 +27,7 @@ public class Test {
 		
 		t.test1(t);
 		System.out.println(t.getSize());
+		log.info("testddddddddddddddddd");
 	}
 	
 	public void test1(Test t) {
