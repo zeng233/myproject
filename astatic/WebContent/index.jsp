@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <script type="text/javascript" src="pages/js/myjs.js"></script>
-<title>Insert title here</title>
+<title>测试静态语言</title>
 </head>
 <body>
 	<h1>test</h1>
