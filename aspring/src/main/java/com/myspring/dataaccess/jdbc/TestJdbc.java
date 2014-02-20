@@ -5,6 +5,7 @@ import org.apache.commons.logging.LogFactory;
 
 import com.myspring.commons.BaseIoc;
 import com.myspring.dao.JdbcDao;
+import com.myspring.dao.MyTemplateDao;
 
 /**
  * @description: TODO
@@ -20,12 +21,20 @@ public class TestJdbc extends BaseIoc {
 	
 	JdbcDao jdbcDao = context.getBean("jdbcDao", JdbcDao.class);
 	
+	private MyTemplateDao mydao = context.getBean("myTemplateDao", MyTemplateDao.class);
+	
 	public static void main(String[] args) {
 		TestJdbc t = new TestJdbc();
 		log.info("test");
 //		t.testBatchUpdate();
-		t.testBatchInsert();
-		t.testPerInsert();
+//		t.testBatchInsert();
+//		t.testPerInsert();
+		
+		t.testMytemplateDao();
+	}
+	
+	public void testMytemplateDao() {
+		mydao.getAll();
 	}
 	
 	public void testBatchUpdate() {
