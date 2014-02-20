@@ -23,10 +23,11 @@ public class TestIocByAnnotation {
 	public static void main(String[] args) {
 		TestIocByAnnotation t = new TestIocByAnnotation();
 		t.getCxt();
+		
 	}
 	
 	public void getCxt() {
-		Map<String, Object> map = context.getBeansWithAnnotation(Service.class);
+		Map<String, Object> map = context.getBeansWithAnnotation(Component.class);
 		for (Map.Entry<String, Object> entry : map.entrySet()) {
 			System.out.println("key : " + entry.getKey() + ", value : " + entry.getValue());
 		}
