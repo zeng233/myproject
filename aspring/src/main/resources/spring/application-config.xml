@@ -22,9 +22,14 @@
 
 	<import resource="dao.xml"/>
 
-	<bean
-		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-		<property name="locations" value="classpath:jdbc.properties" />
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<!-- <property name="locations" value="classpath:jdbc.properties" /> -->
+		<!-- 配置多个资源文件 -->
+		<property name="locations">
+			<list>
+				<value>classpath:jdbc.properties</value>
+			</list>
+		</property>
 	</bean>
 
 
