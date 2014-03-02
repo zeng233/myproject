@@ -1,7 +1,7 @@
 package com.achannel.json.jsonlib;
 
-import static org.junit.Assert.*;
-
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -18,6 +18,7 @@ import org.junit.Test;
  * @version 1.0
  */
 public class TestJsonlibTest {
+	private static final Log log = LogFactory.getLog(TestJsonlibTest.class);
 
 	/**
 	 * @throws java.lang.Exception
@@ -49,7 +50,7 @@ public class TestJsonlibTest {
 
 	@Test
 	public void test() {
-		fail("Not yet implemented");
+		log.info("dddd");
 	}
 
 }
