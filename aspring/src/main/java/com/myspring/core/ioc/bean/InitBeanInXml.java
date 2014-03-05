@@ -11,6 +11,6 @@ package com.myspring.core.ioc.bean;
  */
 public class InitBeanInXml {
 	public void myInit() {
-		System.out.println("InitBeanInXml通过配置文件执行初始化方法");
+//		System.out.println("InitBeanInXml通过配置文件执行初始化方法");
 	}
 }

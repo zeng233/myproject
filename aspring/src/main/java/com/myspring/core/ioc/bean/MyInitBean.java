@@ -21,9 +21,9 @@ public class MyInitBean implements InitializingBean {
 
 	@Override
 	public void afterPropertiesSet() throws Exception {
-		System.out.println("执行MyInitBean初始化方法afterPropertiesSet（）");
+//		System.out.println("执行MyInitBean初始化方法afterPropertiesSet（）");
 		myInitBean = cxt.getBean("myInitBean", MyInitBean.class);
-		System.out.println("MyInitBean的afterPropertiesSet方法初始化的myInitBean:" + myInitBean);
+//		System.out.println("MyInitBean的afterPropertiesSet方法初始化的myInitBean:" + myInitBean);
 	}
 
 	public MyInitBean get() {

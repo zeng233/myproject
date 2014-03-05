@@ -44,7 +44,7 @@
 					key="hibernate.cache.use_second_level_cache">${hibernate.cache.use_second_level_cache}</prop> 
 					<prop key="hibernate.cache.use_query_cache">false</prop> -->
 
-				<prop key="hibernate.transaction.factory_class">${hibernate.transaction.factory_class}</prop>
+				<!-- <prop key="hibernate.transaction.factory_class">${hibernate.transaction.factory_class}</prop> -->
 				<!-- jsr303验证模式 因为其要么验证 要么不验证 不能按照规则走 所以此处禁用,有时候 -->
 				<!-- #http://docs.jboss.org/hibernate/entitymanager/3.6/reference/en/html/configuration.html -->
 				<!-- <prop key="javax.persistence.validation.mode">none</prop> --><!-- 默认值为auto -->
@@ -60,12 +60,12 @@
 			</entry> </map> </property> -->
 	</bean>
 
-	<bean id="transactionManager"
+	<!-- <bean id="transactionManager"
 		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 	<tx:annotation-driven transaction-manager="transactionManager"
-		proxy-target-class="true" />
+		proxy-target-class="true" /> -->
 
 	<!-- 默认注入 id为dataSource的数据源,如果beans标签的属性default-autowire设置为byName，spring会自动找与改beans匹配的属性 -->
 	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
