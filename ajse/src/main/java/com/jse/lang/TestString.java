@@ -2,6 +2,7 @@ package com.jse.lang;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -39,10 +40,10 @@ public class TestString {
 		
 //		t.testFormat();
 		
-//		t.testRex();
+		t.testRex();
 //		t.testEquals();
 		
-		t.testContains();
+//		t.testContains();
 		t.joinString();
 	}
 	
@@ -64,7 +65,7 @@ public class TestString {
 		System.out.println("字符串连接：" + s);
 		
 		List<String> ss = new ArrayList<>();
-//		Collections.addAll(ss, "a","b","c","d");
+		Collections.addAll(ss, "a","b","c","d");
 		String sql = "in('" + StringUtils.join(ss, "','") + "')";
 		System.out.println("SQL:" + sql);
 	}
@@ -114,6 +115,11 @@ public class TestString {
 	public void testRex() {
 		String s = "20100102377892";
 		System.out.println(s.replaceAll("\\s", "','"));
+		
+		String orders = "2013 2014";
+		String[] array = orders.split("\\s");
+		List<String> list = Arrays.asList(array);
+		System.out.println(list.size());
 	}
 	
 	public void tString(String s) {
