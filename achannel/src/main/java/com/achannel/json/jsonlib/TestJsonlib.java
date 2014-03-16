@@ -21,7 +21,8 @@ public class TestJsonlib {
 	public static void main(String[] args) throws Exception {
 		TestJsonlib t = new TestJsonlib();
 //		t.convertStringToJson();
-		t.convertStringToJson1();
+//		t.convertStringToJson1();
+		t.convertStringToJson2();
 	}
 	
 	public void convertStringToJson() throws Exception {
@@ -77,14 +78,20 @@ public class TestJsonlib {
 		}
 	}
 	
-	
-//	JSONObject jsonCountry = JSONObject.fromObject(str);
-//	for(Object provinceKey : jsonCountry.keySet()){
-//		JSONObject jsonProvince = jsonCountry.getJSONObject(String.valueOf(provinceKey));
-//		for(Object cityKey : jsonProvince.getJSONObject("l").keySet()){
-//			JSONObject jsonCity = jsonProvince.getJSONObject("l").getJSONObject(String.valueOf(cityKey));
-//			for(Object cityDistrict : jsonCity.getJSONObject("l").keySet()){
-//				JSONObject jsonDistr
-//qiaoyao(乔耀) 19:23:57
-//ict = jsonCity.getJSONObject("l").getJSONObject
+	public void convertStringToJson2() throws Exception {
+		String area = FileUtils.readFileToString(new File("E:/workplace/achannel/src/main/resources/jsontemplate/area.json"));
+		JSONObject jsonCountry = JSONObject.fromObject(area);
+		
+		for(Object provinceKey : jsonCountry.keySet()){
+			JSONObject jsonProvince = jsonCountry.getJSONObject(String.valueOf(provinceKey));
+			for(Object cityKey : jsonProvince.getJSONObject("l").keySet()){
+				JSONObject jsonCity = jsonProvince.getJSONObject("l").getJSONObject(String.valueOf(cityKey));
+				for(Object cityDistrict : jsonCity.getJSONObject("l").keySet()){
+					JSONObject jsonDistrict = jsonCity.getJSONObject("l").getJSONObject(String.valueOf(cityDistrict));
+					System.out.println(jsonDistrict);
+				}
+			}
+		}
+	}
+
 }
