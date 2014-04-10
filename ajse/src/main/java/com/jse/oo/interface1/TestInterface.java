@@ -9,6 +9,7 @@ package com.jse.oo.interface1;
  *
  * @version 1.0
  */
-public class TestInterface {
-
+public interface TestInterface {
+	//接口只能用public，abstract修饰符
+	abstract void t();
 }
