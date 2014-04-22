@@ -12,6 +12,13 @@ package com.jse.collection.iterator;
 
 public class TestIterator {
 	public static void main(String[] args) {
-		
+		TestIterator t = new TestIterator();
+		t.testMyIterator();
+	}
+	
+	public void testMyIterator() {
+		for (int i : new MyIterator(3)) {
+			System.out.println(i);
+		}
 	}
 }
