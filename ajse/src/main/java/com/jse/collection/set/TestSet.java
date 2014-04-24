@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
@@ -21,6 +22,7 @@ public class TestSet {
 	public static void main(String[] args) {
 		TestSet t = new TestSet();
 		t.testLoop();
+		t.testNull();
 	}
 	
 	public void testLoop() {
@@ -38,25 +40,31 @@ public class TestSet {
 //		Collections.addAll(set, "e","f","g","h");
 		
 		for (String s : set) {
-			System.out.println(s);
+//			System.out.println(s);
 		}
 		
 		Collections.sort(list, String.CASE_INSENSITIVE_ORDER);
 		for (String s : list) {
-			System.out.println(s);
+//			System.out.println(s);
 		}
 	}
 	
-	public void testSortByLetter() {
-		Object[] objs = {"zeng", "华", "a", "订单"};
-		System.out.println("原始：" + objs);
-		for(int i=0; i<objs.length; i++) {
-			System.out.print(objs[i] + " ");
+	/**
+	 * Set最多可以有一个null值，list可以有多个null
+	 * 
+	 */
+	public void testNull() {
+		Set<String> set = new HashSet<>();
+		Collections.addAll(set, null, "a", "b");
+		for (Iterator<String> ite=set.iterator(); ite.hasNext(); ) {
+			System.out.println("set's value is " + ite.next());
 		}
-		System.out.println();
-		Arrays.sort(objs);
-		for(int i=0; i<objs.length; i++) {
-			System.out.print(objs[i] + " ");
+		
+		List<String> list = new ArrayList<>();
+		Collections.addAll(list, null, null, null, "z");
+		for (int i=0; i<list.size(); i++) {
+			System.out.println("list " + i + " is " + list.get(i));
 		}
+		
 	}
 }

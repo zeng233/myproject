@@ -40,4 +40,20 @@ public class TestArrays {
 		List<Integer> list=new ArrayList<>(arrays);
 		
 	}
+	
+	/**
+	 * 排序
+	 */
+	public void testSortByLetter() {
+		Object[] objs = {"zeng", "华", "a", "订单"};
+		System.out.println("原始：" + objs);
+		for(int i=0; i<objs.length; i++) {
+			System.out.print(objs[i] + " ");
+		}
+		System.out.println();
+		Arrays.sort(objs);
+		for(int i=0; i<objs.length; i++) {
+			System.out.print(objs[i] + " ");
+		}
+	}
 }
