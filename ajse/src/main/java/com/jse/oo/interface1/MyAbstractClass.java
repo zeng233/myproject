@@ -1,6 +1,5 @@
 package com.jse.oo.interface1;
 
-import java.lang.reflect.Method;
 
 
 /**
@@ -12,4 +11,4 @@ import java.lang.reflect.Method;
  *
  * @version 1.0
  */
-public  class MyAbstractClass {}
+public abstract class MyAbstractClass {}
