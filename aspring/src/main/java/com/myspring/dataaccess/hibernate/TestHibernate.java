@@ -41,6 +41,7 @@ public class TestHibernate extends BaseIoc {
 			tx.commit();
 		} catch (Exception e) {
 			tx.rollback();
+			e.printStackTrace();
 		} finally {
 			session.close();
 		}
