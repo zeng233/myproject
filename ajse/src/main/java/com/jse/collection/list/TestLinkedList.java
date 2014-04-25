@@ -13,7 +13,7 @@ import java.util.LinkedList;
  */
 public class TestLinkedList {
 	public static void main(String[] args) {
-		
+	
 	}
 	
 	public LinkedList test(LinkedList list1, LinkedList list2) {

@@ -8,7 +8,8 @@ import java.util.Set;
 import java.util.Vector;
 
 /**
- * @description: Iterator与Iterable的区别：Iterator是为了遍历当前节点的元素，Iterable表示获取一个Iterator对象（是有状态的，返回的Iterator不一样）
+ * @description: Iterator与Iterable的区别：Iterator实现该接口表示一个单独的对象，Iterable集合继承该类，
+ * 				Iterable.iterator（返回的Iterator是有状态的，返回的Iterator不一样）
  *
  * @createtime: 2013-5-24 上午11:23:09
  *
@@ -30,6 +31,10 @@ public class TestIterator {
 		}
 	}
 	
+	/**
+	 * iterator没有用remove方法就会抛异常
+	 * @param set
+	 */
 	public void testIteratorRemove() {
 		Set<String> set = new HashSet<>();
 		Collections.addAll(set, "a","b","c");
@@ -40,14 +45,10 @@ public class TestIterator {
 			System.out.println(s);
 			
 		}
-		
+		//再次遍历
 		loop(set);
 	}
 	
-	/**
-	 * iterator没有用remove方法就会抛异常
-	 * @param set
-	 */
 	public void loop(Set<String> set) {
 		for (String ss :set) {
 			set.remove(ss);
