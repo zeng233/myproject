@@ -28,8 +28,8 @@ public class TestArrays {
 	}
 	
 	/**
-	 * Arrays.asList返回的List是它的一个内部类，没有对add,remove进行重写，
-	 * 所以增加删除操作都用的AbstractList没有实现的add和remove方法
+	 * Arrays.asList返回的List是Arrays的一个内部类，没有对add,remove进行重写，
+	 * 所以增加删除操作都用的AbstractList没有实现的add和remove方法，调用这两个方法会抛异常
 	 */
 	public void testAsList() {
 		Integer[] arr = {1,4,5,2,34};
