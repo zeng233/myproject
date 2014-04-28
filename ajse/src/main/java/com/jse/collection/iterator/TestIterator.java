@@ -144,7 +144,7 @@ public class TestIterator {
 		List<String> list = new ArrayList<>();
 		Collections.addAll(list, "a", "b", "c");
 //		for (Iterator<String> ite = list.iterator(); ite.hasNext();) {
-//			String s = ite.next();// 抛出异常ConcurrentModificationException
+//			String s = ite.next();// 抛出异常ConcurrentModificationException，去掉改方法会有outofmemory异常 TODO
 //			list.add("d");
 //		}
 
