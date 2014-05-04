@@ -20,14 +20,18 @@ public class TestFile {
 	}
 	
 	/**
-	 * File路径相关
+	 * File路径相关，几个路径常量
 	 */
 	public void getFilePath() {
-		File dir = new File(".");//当前路径
-		System.out.println("pathSeparator : " + dir.pathSeparator);
-		System.out.println("pathSeparatorChar : " + dir.pathSeparatorChar);
-		System.out.println("separator : " + dir.separator);
-		System.out.println("separatorChar : " + dir.separatorChar);
+//		File f = new File("src\\main\\resources.tostring.txt");\\第一个\表示转义字符
+		File dir = new File("src/main/resources/tostring.txt");//当前路径
+		System.out.println(dir.getAbsolutePath());
+		System.out.println(dir.getPath());
+		System.out.println(dir.getParent());
+		System.out.println("pathSeparator : " + File.pathSeparator);
+		System.out.println("pathSeparatorChar : " + File.pathSeparatorChar);
+		System.out.println("separator : " + File.separator);
+		System.out.println("separatorChar : " + File.separatorChar);
 		
 		try {
 			File file = new File(dir.getCanonicalPath() + File.separator + "TestFile.java");
