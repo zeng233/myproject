@@ -139,6 +139,8 @@ public class TestIterator {
 	/**
 	 * java.util包下面的集合都是快速失败（fail-fast，会抛ConcurrentModificationException），
 	 * java.util.concurrent包下面的集合都是安全失败（fail-safe）
+	 * 
+	 * 参考：http://javarevisited.blogspot.com/2012/02/fail-safe-vs-fail-fast-iterator-in-java.html
 	 */
 	public void failfastVsFailsafe() {
 		List<String> list = new ArrayList<>();
@@ -148,11 +150,13 @@ public class TestIterator {
 //			list.add("d");
 //		}
 
+		//CopyOnWriteArrayList的iterator实现方法是将以前的元素放到一个快照表里面去，
+		//迭代的是这个快照表的元素，对原始的List进行增删操作不受影响
 		List<String> alist = new CopyOnWriteArrayList<String>();
 		Collections.addAll(alist, "1", "2", "3");
 		for (Iterator<String> ite = alist.iterator(); ite.hasNext();) {
 			String s = ite.next();
-			list.add("4");//参考CopyOnWriteArrayList API，为什么长度不是4 TODO
+			alist.add("4");//参考CopyOnWriteArrayList API
 			System.out.println(alist.size());
 		}
 	}
