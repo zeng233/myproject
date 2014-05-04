@@ -23,7 +23,7 @@ public class TestInit extends SuperObject {
 	}
 	
 	public TestInit() {
-		System.out.println("初始化构造函数");
+		System.out.println("子类初始化构造函数");
 	}
 	
 	public static void main(String[] args) {
