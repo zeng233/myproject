@@ -1,5 +1,5 @@
 CREATE TABLE user(
-id int PRIMARY KEY,
+id int PRIMARY KEY AUTO_INCREMENT,
 userName varchar(20),
 password varchar(20),
 createTime datetime,
@@ -7,13 +7,13 @@ imageUrl varchar(20)
 );
 
 CREATE TABLE student(
-id int PRIMARY KEY,
+id int PRIMARY KEY AUTO_INCREMENT,
 studentName varchar(20),
 courseId int
 );
 
 CREATE TABLE course(
-id int PRIMARY KEY,
+id int PRIMARY KEY AUTO_INCREMENT,
 courseName varchar(20)
 );
 
