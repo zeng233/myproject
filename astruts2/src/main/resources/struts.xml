@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+<!-- 
+    <constant name="struts.enable.DynamicMethodInvocation" value="false" />
+    <constant name="struts.devMode" value="false" />
+    <include file="example.xml"/>
+ -->
+    
+    <constant name="struts.custom.i18n.resources" value="message.properties"></constant>
+    
+	 <package name="default" extends="struts-default">
+        <action name="elAction" class="com.test.el.action.ElAction">
+            <result name="success">/el.jsp</result>
+        </action>
+        
+        <action name="tempAction" class="com.test.ognl.action.TempAction">
+        	<result type="redirect">ognlAction?name=${name}</result>
+        </action>
+        
+        <action name="doUpload" class="com.test.ognl.action.FileUploadAction">
+        </action>
+        
+        
+        <action name="ognlAction" class="com.test.ognl.action.OgnlAction">
+        	<result name="success">/ognl.jsp</result>
+        </action>
+    </package>
+
+</struts>
