@@ -279,4 +279,23 @@
 		</pluginRepository>
 	</pluginRepositories>
 
+
+	<build>
+		<plugins>
+			<plugin>
+				<!-- 配置tomcat插件 -->
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+
+				<configuration>
+					<url>http://localhost:8080/manager/text</url>
+					<server>tomcatserver</server>
+					<username>admin</username>
+					<password>admin</password>
+					<path>/aspring</path>
+				</configuration>
+				<version>2.2</version>
+			</plugin>
+		</plugins>
+	</build>
 </project>
