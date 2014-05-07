@@ -12,7 +12,7 @@ import org.apache.activemq.ActiveMQConnection;
 import org.apache.activemq.ActiveMQConnectionFactory;
 
 /**
- * @description: TODO
+ * @description: 点对点
  * 
  * @createtime: 2013-10-21 上午10:42:21
  * 
