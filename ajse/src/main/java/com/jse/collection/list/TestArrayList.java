@@ -1,5 +1,6 @@
 package com.jse.collection.list;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.google.common.collect.Lists;
@@ -16,7 +17,12 @@ import com.google.common.collect.Lists;
 public class TestArrayList {
 	public static void main(String[] args) {
 		TestArrayList t = new TestArrayList();
-		t.createListByGuava();
+//		t.createListByGuava();
+		
+		List<String > list = null;
+		t.initList(list);
+		list.add("123");
+		System.out.println(list.size());
 	}
 	
 	/**
@@ -26,6 +32,17 @@ public class TestArrayList {
 		List<String> list = Lists.newArrayList(new String[]{"a","b","c"});
 		for (String s : list) {
 			System.out.println(s);
+		}
+	}
+	
+	/**
+	 * 
+	 */
+	public void initList(List<String> list) {
+		if (list == null) {
+			list = new ArrayList<>();
+		} else {
+			list.clear();
 		}
 	}
 }
