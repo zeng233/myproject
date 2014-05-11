@@ -1,0 +1,20 @@
+package com.apattern.proxy.dynamic;
+
+/**
+ * @description: TODO
+ *
+ * @createTime: 2014年5月11日 下午5:11:46
+ *
+ * @author zenghua
+ *
+ * @version 1.0
+ */
+public class Manager extends SuperEvent {
+
+	@Override
+	public void develop() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}
