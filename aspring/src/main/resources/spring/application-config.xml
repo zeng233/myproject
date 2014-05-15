@@ -19,8 +19,9 @@
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Repository"/> -->
 	</context:component-scan>
 
-
+	<!-- 引入其他资源文件 -->
 	<import resource="dao.xml"/>
+	<!-- <import resource="aop.xml"/> -->
 
 	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<!-- <property name="locations" value="classpath:jdbc.properties" /> -->
