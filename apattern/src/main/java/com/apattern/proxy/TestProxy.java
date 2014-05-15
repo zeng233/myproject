@@ -1,8 +1,5 @@
 package com.apattern.proxy;
 
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Proxy;
-
 import com.apattern.proxy.astatic.ProxySubject;
 import com.apattern.proxy.astatic.Subject;
 import com.apattern.proxy.dynamic.ADynamicSubject;
@@ -41,10 +38,16 @@ public class TestProxy {
 	 */
 	public void dynamicProxy() {
 		ARealSubject realObject = new ARealSubject();
-		InvocationHandler ds = new ADynamicSubject(realObject);
-		Class<?> cls = realObject.getClass();
-		//使用Proxy新建出来的代理类，
-		ASubject subject = (ASubject) Proxy.newProxyInstance(cls.getClassLoader(), cls.getInterfaces(), ds);
+//		InvocationHandler ds = new ADynamicSubject(realObject);
+//		Class<?> cls = realObject.getClass();
+//		//使用Proxy新建出来的代理类，
+//		ASubject subject = (ASubject) Proxy.newProxyInstance(cls.getClassLoader(), cls.getInterfaces(), ds);
+		
+		ADynamicSubject ds = new ADynamicSubject(realObject);
+		ASubject subject = (ASubject) ds.getProxy();
 		subject.request();
+		System.out.println();
+		String[] s = {"hello", " world!"};
+		subject.requestByParam(s, 111);
 	}
 }
