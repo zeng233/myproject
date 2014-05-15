@@ -1,5 +1,7 @@
 package com.apattern.proxy.dynamic;
 
+import org.apache.commons.lang3.StringUtils;
+
 /**
  * @description: TODO
  *
@@ -14,6 +16,12 @@ public class ARealSubject implements ASubject {
 	@Override
 	public void request() {
 		System.out.println("this is realsubject's method ----- request() ");
+	}
+
+	@Override
+	public String requestByParam(String[] s, int i) {
+		String join = StringUtils.join(s, "s");
+		return join;
 	}
 
 }

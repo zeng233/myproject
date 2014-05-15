@@ -11,4 +11,6 @@ package com.apattern.proxy.dynamic;
  */
 public interface ASubject {
 	void request();
+	
+	String requestByParam(String[] s, int i);
 }
