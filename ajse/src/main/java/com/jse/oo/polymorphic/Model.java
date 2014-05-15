@@ -11,7 +11,9 @@ package com.jse.oo.polymorphic;
  */
 public class Model {
 
-	protected void test() {}
+	protected void test() {
+		System.out.println(" this is Model's method ===test()");
+	}
 	
 	public synchronized  void   t() {}
 }

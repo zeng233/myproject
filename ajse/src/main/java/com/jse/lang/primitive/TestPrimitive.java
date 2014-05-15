@@ -14,9 +14,11 @@ public class TestPrimitive {
 	public static void main(String[] args) {
 		TestPrimitive t = new TestPrimitive();
 		byte num = 8;
-		t.testPrecision(num);
+//		t.testPrecision(num);
 		
 //		t.convertToInteger("0000000081");
+		
+		t.testChar();
 	}
 	
 	/**
@@ -41,12 +43,13 @@ public class TestPrimitive {
 		System.out.println("valueOf: " + Integer.valueOf(s));
 	}
 	
-	
-	public void test(String... arguments) {
-		if (arguments != null) {
-			for (String s : arguments) {
-				System.out.println(s);
-			}
-		}
+	/**
+	 * 测试char的取值范围
+	 */
+	public void testChar() {
+		char c = '\u0061';
+		int i = '\uffff';
+		System.out.println(c);
+		System.out.println(i);
 	}
 }

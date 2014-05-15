@@ -14,10 +14,21 @@ import com.jse.oo.polymorphic.Model;
 public class TestAccess {
 	private TestAccess(){}
 	
+	
 	public static void main(String[] args) {
 		Model m = new ModelImpl();
-		System.out.println(Math.floor(11.9));
+		m.t();
+//		System.out.println(Math.floor(11.9));
 		
 		TestAccess t = new TestAccess();
+		t.show("aaaa");
+	}
+	
+	public void show(Object obj) {
+		System.out.println("this is Object : " + obj);
+	}
+	
+	public void show(String s) {
+		System.out.println("this is String : " + s);
 	}
 }

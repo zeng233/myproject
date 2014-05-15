@@ -96,6 +96,12 @@ public class TestString {
 		System.out.println((ss1+ss2)=="abcd");//true，参考4.12.4. final Variables，
 		System.out.println(ss=="abcd");
 		System.out.println((as+bs)==s1);
+		
+		
+		int i = 1;
+		int j = 1;
+		String sum = "s" + 1+1;
+		System.out.println(sum);
 	}
 	
 	

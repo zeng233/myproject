@@ -14,6 +14,6 @@ import com.jse.oo.polymorphic.Model;
 public class ModelImpl extends Model {
 	public static void main(String[] args) {
 		Model m = new ModelImpl();
-		
+		m.t();//只有在同一个包下面，才可以访问Model的test方法，参考ModelSub就可以访问test方法
 	}
 }
