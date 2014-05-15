@@ -115,25 +115,21 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
 			<version>3.2.5.RELEASE</version>
-			<type>pom</type>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-tx</artifactId>
 			<version>3.2.5.RELEASE</version>
-			<type>pom</type>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-web</artifactId>
 			<version>3.2.5.RELEASE</version>
-			<type>pom</type>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
 			<version>3.2.5.RELEASE</version>
-			<type>pom</type>
 		</dependency>
 
 		<!-- hibernate -->
