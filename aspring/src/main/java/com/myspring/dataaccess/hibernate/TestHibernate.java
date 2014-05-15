@@ -9,6 +9,8 @@ import org.hibernate.Transaction;
 
 import com.myspring.commons.BaseIoc;
 import com.myspring.model.Room;
+import com.myspring.model.User;
+import com.myspring.service.user.UserService;
 
 /**
  * @description: TODO
@@ -23,6 +25,7 @@ public class TestHibernate extends BaseIoc {
 	public static void main(String[] args) {
 		TestHibernate t = new TestHibernate();
 		t.testQuery();
+//		t.save();
 	}
 	
 	public void testQuery() {
@@ -45,5 +48,17 @@ public class TestHibernate extends BaseIoc {
 		} finally {
 			session.close();
 		}
+	}
+	
+	public void save() {
+		UserService userService = context.getBean("userService", UserService.class);
+		User user = new User();
+		user.setUserName("aaa");
+		user.setPassword("ppp");
+		System.out.println(userService);
+//		userService.save(user);
+		
+		List<Room> list = userService.query();
+		System.out.println(list);
 	}
 }
