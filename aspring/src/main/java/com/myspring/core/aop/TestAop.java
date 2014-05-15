@@ -1,5 +1,7 @@
 package com.myspring.core.aop;
 
+import org.springframework.aop.framework.ProxyFactory;
+
 /**
  * @description: TODO
  *
@@ -10,5 +12,25 @@ package com.myspring.core.aop;
  * @version 1.0
  */
 public class TestAop {
-
+	public static void main(String[] args) {
+		TestAop t = new TestAop();
+		t.testAop();
+	}
+	
+	
+	public void testAop() {
+		IHelloWorld target = new IHelloWorldImpl();
+		// create the proxy
+		ProxyFactory pf = new ProxyFactory();
+		HelloWorldDecorator hd = new HelloWorldDecorator();
+		pf.addAdvice(hd);
+		pf.setTarget(target);
+		pf.removeAdvice(hd);
+		
+		IHelloWorld proxy = (IHelloWorld)pf.getProxy();
+		System.out.println("=========target object=========");
+		target.show();
+		System.out.println("\n=========proxy object==========");
+		proxy.show();
+	}
 }
