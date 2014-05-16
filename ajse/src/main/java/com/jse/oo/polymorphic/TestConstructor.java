@@ -26,6 +26,6 @@ class Lunch extends Meal {
 	
 	//如果父类没有无参的构造函数，就要用super关键字构造一个父类的构造函数，这样的作用是检查对象是否得到正确的构建
 	public Lunch(String s) {
-		super(s);
+//		super(s);
 	}
 }

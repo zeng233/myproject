@@ -16,4 +16,10 @@ public class Model {
 	}
 	
 	public synchronized  void   t() {}
+	
+	
+	public Model me() {
+		//this表示当前的Object，如果子类构造一个实例，就代表子类
+		return this;
+	}
 }
