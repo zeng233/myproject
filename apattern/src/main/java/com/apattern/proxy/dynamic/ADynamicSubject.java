@@ -28,7 +28,7 @@ public class ADynamicSubject implements InvocationHandler {
 
 		if (args != null) {
 			// 参考InvocationHandler，args表示 被调用方法的参数
-			String[] ss = (String[]) args[0];// 强制转换成Object[]是否会抛异常？？ TODO
+			String[] ss = (String[]) args[0];// 可以强制转换成Object[]，参考JSL5
 			System.out.println("第一个参数值：" + ss[0] + ss[1]);
 			System.out.println("第二个参数值：" + args[1]);
 		}
