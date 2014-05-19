@@ -23,6 +23,7 @@ public class ProductNameObserver implements Observer {
 			name = (String) arg;
 			// 产品名称改变值在name中
 			System.out.println("ProductNameObserver :name changed to " + name);
+			System.out.println("subject's name is changed to : " + ((Product)obj).getName());
 		}
 	}
 }

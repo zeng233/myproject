@@ -22,12 +22,14 @@ public class Product extends Observable {
 	}
 
 	public void setName(String name) {
-		// 设置变化点，name的值发生变化了，状态才改变
-		if (!name.equals(this.name)) {
-			setChanged();
-		}
-		notifyObservers(name);
 		this.name = name;
+		setChanged();
+		// 设置变化点，name的值发生变化了，状态才改变
+//		if (!name.equals(this.name)) {
+//			setChanged();
+//		}
+		notifyObservers(name);
+		
 	}
 
 	public float getPrice() {
