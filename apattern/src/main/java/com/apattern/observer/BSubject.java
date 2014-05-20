@@ -25,7 +25,7 @@ public abstract class BSubject {
 		observers.remove(observer);
 	}
 	
-	public void notifyObservers() {
+	public void notifyObservers(String state) {
 		if (!observers.isEmpty()) {
 			for (BObserver b : observers) {
 				b.update();

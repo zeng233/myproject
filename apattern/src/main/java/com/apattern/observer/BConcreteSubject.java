@@ -14,6 +14,7 @@ public class BConcreteSubject extends BSubject {
 	
 	public void change(String newState) {
 		this.state = newState;
-		this.notifyObservers();
+		//这里可以把当前的被观察对象，以及状态传递给观察者
+		this.notifyObservers(state);
 	}
 }
