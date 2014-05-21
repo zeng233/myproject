@@ -24,8 +24,8 @@ import com.myspring.service.user.UserService;
 public class TestHibernate extends BaseIoc {
 	public static void main(String[] args) {
 		TestHibernate t = new TestHibernate();
-		t.testQuery();
-//		t.save();
+//		t.testQuery();
+		t.save();
 	}
 	
 	public void testQuery() {
@@ -36,7 +36,7 @@ public class TestHibernate extends BaseIoc {
 		
 		try {
 			tx = session.beginTransaction();
-			Query query = session.createQuery("select r from Room r join Student s where r.id=1 and s.id=1");
+			Query query = session.createQuery("from Room");
 			List<Room> list = (List<Room>)query.list();
 			for (Room r : list) {
 				System.out.println(r.getRoomid());
@@ -56,9 +56,9 @@ public class TestHibernate extends BaseIoc {
 		user.setUserName("aaa");
 		user.setPassword("ppp");
 		System.out.println(userService);
-//		userService.save(user);
+		userService.save(user);
 		
-		List<Room> list = userService.query();
-		System.out.println(list);
+//		List<Room> list = userService.query();
+//		System.out.println(list);
 	}
 }

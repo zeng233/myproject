@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 /**
  * @description: TODO
@@ -17,13 +18,14 @@ import javax.persistence.OneToMany;
  * @version 1.0
  */
 @Entity
+@Table
 public class Room {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int roomid;
 	private String roomname;
-	@OneToMany(cascade=CascadeType.ALL, mappedBy="room")
-	private Student student;
+//	@OneToMany(cascade=CascadeType.ALL, mappedBy="room")
+//	private Student student;
 
 	public int getRoomid() {
 		return roomid;
@@ -41,12 +43,5 @@ public class Room {
 		this.roomname = roomname;
 	}
 
-	public Student getStudent() {
-		return student;
-	}
-
-	public void setStudent(Student student) {
-		this.student = student;
-	}
 
 }

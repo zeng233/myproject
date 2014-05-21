@@ -32,12 +32,14 @@
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
+		<!-- <property name="schemaUpdate" value="true" /> -->  <!-- hibernate3才有 -->
 		<property name="hibernateProperties">
 			<props>
 				<prop key="hibernate.dialect">${hibernate.dialect}</prop>
 				<prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>
 				<prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
 				<prop key="hibernate.format_sql">${hibernate.format_sql}</prop>
+				
 
 				<!-- <prop key="hibernate.query.factory_class">org.hibernate.hql.ast.ASTQueryTranslatorFactory</prop> 
 					<prop key="hibernate.connection.release_mode">after_transaction</prop> <prop 
@@ -52,7 +54,7 @@
 		</property>
 		<property name="packagesToScan">
 			<list>
-				<value>com.myspring.model.*</value>
+				<value>com.myspring.model</value><!-- 不能使用com.myspring.model.*不然找不到实体 -->
 			</list>
 		</property>
 		<!-- <property name="eventListeners"> <map key-type="java.lang.String"> 
