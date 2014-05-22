@@ -138,11 +138,8 @@
 			<artifactId>hibernate-core</artifactId>
 			<version>4.1.9.Final</version>
 		</dependency>
-		<!-- <dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-annotations</artifactId>
-			<version>3.4.0.GA</version>
-		</dependency> --><!-- 注解已经继承到hibernate-core -->
+		<!-- <dependency> <groupId>org.hibernate</groupId> <artifactId>hibernate-annotations</artifactId> 
+			<version>3.4.0.GA</version> </dependency> --><!-- 注解已经继承到hibernate-core -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
@@ -239,11 +236,16 @@
 			<artifactId>guava</artifactId>
 			<version>15.0</version>
 		</dependency>
+		<dependency>
+			<groupId>org.jodd</groupId>
+			<artifactId>jodd-core</artifactId>
+			<version>3.5.2</version>
+		</dependency>
 	</dependencies>
 
-	
-	
-	
+
+
+
 	<!-- 增加开源中国镜像 -->
 	<repositories>
 		<repository>
