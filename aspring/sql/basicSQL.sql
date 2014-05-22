@@ -1,3 +1,5 @@
+insert into t_user(id,username,password) values(null,'a','a')
+
 
 -- exist的用法
 select * from t exist;
