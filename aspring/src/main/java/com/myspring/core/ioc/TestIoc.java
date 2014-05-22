@@ -2,6 +2,7 @@ package com.myspring.core.ioc;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.hibernate.SessionFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -60,8 +61,10 @@ public class TestIoc {
 	public void testCommonBean() {
 		//实现了FactoryBean接口，实用getBean方法不能直接获取对象，参考5.8（Customizing instantiation logic with a FactoryBean）
 		System.out.println(context.getBean("&sessionFactory", LocalSessionFactoryBean.class)); 
+		//LocalSessionFactoryBean实现的FactoryBean接口，返回的对象为getObject()获取的对象
+		System.out.println(context.getBean("sessionFactory", SessionFactory.class)); 
 		
-		HibernateTransactionManager t = context.getBean("transactionManager", HibernateTransactionManager.class);
+		HibernateTransactionManager t = context.getBean("hibernateTxManager", HibernateTransactionManager.class);
 		System.out.println(t.getSessionFactory());
 		
 		JdbcTemplate jdbcTemplate = context.getBean("jdbcTemplate", JdbcTemplate.class);

@@ -12,7 +12,7 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
 		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.2.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
-
+	<!-- DBCP数据源 -->
 	<bean id="dataSource" destroy-method="close"
 		class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="${jdbc.driverClassName}" />
@@ -28,6 +28,11 @@
 		<property name="username" value="${jdbc.username}" />
 		<property name="password" value="${jdbc.password}" />
 	</bean>
+	
+	
+	
+	
+	
 	<!-- AnnotationSessionFactoryBeans实用于3 -->
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
@@ -70,8 +75,8 @@
 		proxy-target-class="true" /> -->
 
 
-	<!-- hibernate事务管理 -->
-	<bean id="myTxManager"
+	<!-- hibernate声明式事务管理 -->
+	<bean id="hibernateTxManager"
 		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
@@ -80,11 +85,10 @@
 			expression="execution(* com.myspring.service.user.UserService.*(..))" />
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="userServiceMethods" />
 	</aop:config>
-	<tx:advice id="txAdvice" transaction-manager="myTxManager">
+	<tx:advice id="txAdvice" transaction-manager="hibernateTxManager">
 		<tx:attributes>
-			<!-- <tx:method name="increasePrice*" propagation="REQUIRED" />
-			<tx:method name="someOtherBusinessMethod" propagation="REQUIRES_NEW" /> -->
-			<tx:method name="*" propagation="SUPPORTS" read-only="true" />
+			<tx:method name="save*" propagation="REQUIRED" />
+			<!-- <tx:method name="*" propagation="SUPPORTS" read-only="true" /> -->
 		</tx:attributes>
 	</tx:advice>
 	<!-- <bean id="myProductService" class="product.SimpleProductService">

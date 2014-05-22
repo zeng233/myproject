@@ -1,5 +1,7 @@
 package com.myspring.model;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,11 +23,11 @@ import javax.persistence.Table;
 @Table
 public class Room {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int roomid;
 	private String roomname;
-//	@OneToMany(cascade=CascadeType.ALL, mappedBy="room")
-//	private Student student;
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "room")
+	private List<Student> students;
 
 	public int getRoomid() {
 		return roomid;
@@ -43,5 +45,12 @@ public class Room {
 		this.roomname = roomname;
 	}
 
+	public List<Student> getStudents() {
+		return students;
+	}
+
+	public void setStudents(List<Student> students) {
+		this.students = students;
+	}
 
 }
