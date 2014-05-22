@@ -8,6 +8,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import com.myspring.commons.BaseIoc;
+import com.myspring.dao.user.UserDao;
 import com.myspring.model.Room;
 import com.myspring.model.User;
 import com.myspring.service.user.UserService;
@@ -36,7 +37,7 @@ public class TestHibernate extends BaseIoc {
 		
 		try {
 			tx = session.beginTransaction();
-			Query query = session.createQuery("from Room");
+			Query query = session.createQuery("select r from Room r join r.students s where s.id=1");
 			List<Room> list = (List<Room>)query.list();
 			for (Room r : list) {
 				System.out.println(r.getRoomid());
@@ -50,8 +51,10 @@ public class TestHibernate extends BaseIoc {
 		}
 	}
 	
+	
 	public void save() {
 		UserService userService = context.getBean("userService", UserService.class);
+		
 		User user = new User();
 		user.setUserName("aaa");
 		user.setPassword("ppp");
