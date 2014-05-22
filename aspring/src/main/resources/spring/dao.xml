@@ -75,8 +75,8 @@
 		proxy-target-class="true" /> -->
 
 
-	<!-- hibernate声明式事务管理 -->
-	<bean id="hibernateTxManager"
+	<!-- hibernate声明式事务管理，参考HibernateTransactionManager API文档，也可以支持JDBC事务 -->
+<!-- 	<bean id="hibernateTxManager"
 		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
@@ -88,9 +88,10 @@
 	<tx:advice id="txAdvice" transaction-manager="hibernateTxManager">
 		<tx:attributes>
 			<tx:method name="save*" propagation="REQUIRED" />
-			<!-- <tx:method name="*" propagation="SUPPORTS" read-only="true" /> -->
+			<tx:method name="*" propagation="SUPPORTS" read-only="true" />
 		</tx:attributes>
-	</tx:advice>
+	</tx:advice> -->
+	
 	<!-- <bean id="myProductService" class="product.SimpleProductService">
 		<property name="productDao" ref="myProductDao" />
 	</bean> -->
@@ -98,8 +99,13 @@
 
 
 
-
-	<!-- 默认注入 id为dataSource的数据源,如果beans标签的属性default-autowire设置为byName，spring会自动找与改beans匹配的属性 -->
+	<!-- JDBC事务 -->
+	<bean id="txManager"  
+        class="org.springframework.jdbc.datasource.DataSourceTransactionManager">  
+        <property name="dataSource" ref="dataSource" />  
+    </bean>  
+    <tx:annotation-driven transaction-manager="txManager" />   
+	<!-- 默认注入 id为dataSource的数据源,如果beans标签的属性default-autowire设置为byName，spring会自动找与该bean匹配的属性 -->
 	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
 		<property name="dataSource" ref="dataSource" />
 	</bean>

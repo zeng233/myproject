@@ -17,4 +17,5 @@ import com.myspring.model.User;
 public interface UserService {
 	void save(User user);
 	List<Room> query();
+	void insertUserByJdbc();
 }

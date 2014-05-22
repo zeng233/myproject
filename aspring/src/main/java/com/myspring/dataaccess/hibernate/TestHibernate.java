@@ -23,10 +23,13 @@ import com.myspring.service.user.UserService;
  * @version 1.0
  */
 public class TestHibernate extends BaseIoc {
+	UserService userService = context.getBean("userService", UserService.class);
+	
 	public static void main(String[] args) {
 		TestHibernate t = new TestHibernate();
 //		t.testQuery();
-		t.save();
+//		t.save();
+		t.insertUserByJdbc();
 	}
 	
 	public void testQuery() {
@@ -53,8 +56,6 @@ public class TestHibernate extends BaseIoc {
 	
 	
 	public void save() {
-		UserService userService = context.getBean("userService", UserService.class);
-		
 		User user = new User();
 		user.setUserName("aaa");
 		user.setPassword("ppp");
@@ -63,5 +64,9 @@ public class TestHibernate extends BaseIoc {
 		
 //		List<Room> list = userService.query();
 //		System.out.println(list);
+	}
+	
+	public void insertUserByJdbc() {
+		userService.insertUserByJdbc();
 	}
 }
