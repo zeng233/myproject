@@ -22,8 +22,8 @@ public class TestDate {
 		String date = FastDateFormat.getInstance("yyyy-MM-dd HH:mm:ss").format(new Date());
 		
 		String date1 = DateFormatUtils.format(new Date(), "yyyy-MM-dd");
-//		System.out.println(date);
-//		System.out.println(date1);
+		System.out.println(date);
+		System.out.println(date1);
 		
 		TestDate t = new TestDate();
 		t.testCompareDate();
