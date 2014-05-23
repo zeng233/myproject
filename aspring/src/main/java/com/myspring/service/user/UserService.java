@@ -18,4 +18,5 @@ public interface UserService {
 	void save(User user);
 	List<Room> query();
 	void insertUserByJdbc();
+	List<User> getUser();
 }

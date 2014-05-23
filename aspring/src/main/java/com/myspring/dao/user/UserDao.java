@@ -6,6 +6,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -64,6 +65,11 @@ public class UserDao {
 	
 	public void insertUserByJdbc() {
 		jdbcTemplate.update("insert into t_user(id,username,password) values(null,'a','a')");
-		
+	}
+	
+	public List<User> getUser() {
+		List<User> list = jdbcTemplate.query("select * from t_user t where t.id=?", 
+				new BeanPropertyRowMapper<User>(User.class), 1);
+		return list;
 	}
 }
