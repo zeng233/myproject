@@ -10,6 +10,6 @@ package com.apattern.singleton;
  * @version 1.0
  */
 
-public class TestSingletom {
-
+public class TestSingleton {
+	
 }
