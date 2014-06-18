@@ -11,7 +11,10 @@
 		<title>Welcome</title>
 	</head> 
 	<body>
-		<c:url value="/showMessage.html" var="messageUrl" />
-		<a href="${messageUrl}">Click to enter</a>
+		<h1>welcome</h1><br>
+		<a href="test/show">showMessage</a><br>
+		
+		pageContext.request: ${pageContext.request }<br>
+		pageContext.request.contextPath: ${pageContext.request.contextPath}
 	</body>
 </html>
