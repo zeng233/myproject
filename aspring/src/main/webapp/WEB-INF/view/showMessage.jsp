@@ -1,13 +1,18 @@
 <!DOCTYPE html>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-    
+<%@ taglib uri= "http://java.sun.com/jsp/jstl/core" prefix= "c"%>
+<%@ taglib uri= "http://java.sun.com/jsp/jstl/fmt" prefix= "fmt"%>
+<%@ taglib uri= "http://java.sun.com/jsp/jstl/functions" prefix= "fn"%>
+<c:set var="contextPath" value="${pageContext.request.contextPath }"></c:set>   
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>Welcome</title>
+		<title>showMessage</title>
 	</head> 
 	<body>
-		<h2>${message}</h2>
+		<h2>showMessage</h2><br>
+		pageContext.request: ${pageContext.request }<br>
+		pageContext.request.contextPath: ${pageContext.request.contextPath}
 	</body>
 </html>
