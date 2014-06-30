@@ -1,0 +1,75 @@
+<html>
+<head>
+	<title>CSS测试</title>
+	<!-- 外部样式表 -->
+	/*<link rel="stylesheet" type="text/css" href="">*/
+	<!-- 内部样式表 -->
+	<style type="text/css">
+		//派生选择器
+		ul.decimal {list-style-type : decimal}
+
+		li strong {
+		    font-style: italic;
+		    font-weight: normal;
+		    color: red;
+		}
+
+		
+
+		ul li {
+			color: red;
+		}
+
+		input {
+			text-align: center;
+		}
+
+
+		table {
+			border-collapse:collapse;
+			width: 100%
+
+		}
+
+		table,th, td {
+	  		border: 1px solid black;
+	  		border-color: blue;
+		}
+
+
+		td {
+			vertical-align: bottom;
+			height: 50px;
+		}
+
+	</style>
+</head>
+<body>
+	<input type="text" id="a"/> 
+	<p><strong>我是粗体没在li中</strong></p>
+	<ol>
+		<li><strong>this is li：</strong><p class="cc">this is p</p></li>
+		<li>我是正常的字体。</li>
+	</ol>
+
+	<ul class="decimal">
+		<li>第一层</li>
+		<li>第二层</li>
+	</ul>
+
+	<table>
+		<tr>
+			<th>aaa</th>
+			<th>aaa</th>
+		</tr>
+		<tr>
+			<td>bbb</td>
+			<td>bbb</td>
+		</tr>
+		<tr>
+			<td>ccc</td>
+			<td>ccc</td>
+		</tr>
+	</table>
+</body>
+</html>
