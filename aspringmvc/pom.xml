@@ -9,7 +9,7 @@
 	<properties>
 
 		<!-- Generic properties -->
-		<java.version>1.6</java.version>
+		<java.version>1.7</java.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
@@ -24,10 +24,12 @@
 
 		<!-- Hibernate / JPA -->
 		<hibernate.version>4.1.9.Final</hibernate.version>
+		<hibernate.validation>5.1.1.Final</hibernate.validation>
 
 		<!-- Logging -->
 		<logback.version>1.1.2</logback.version>
 		<slf4j.version>1.7.5</slf4j.version>
+		<logback-ext-spring.version>0.1.2</logback-ext-spring.version>
 
 		<!-- Test -->
 		<junit.version>4.10</junit.version>
@@ -48,6 +50,11 @@
 			<groupId>javax.servlet.jsp.jstl</groupId>
 			<artifactId>javax.servlet.jsp.jstl-api</artifactId>
 			<version>${jstl.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.taglibs</groupId>
+			<artifactId>taglibs-standard-impl</artifactId>
+			<version>1.2.1</version>
 		</dependency>
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -80,7 +87,11 @@
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-classic</artifactId>
 			<version>${logback.version}</version>
-			<!-- <scope>runtime</scope> -->
+		</dependency>
+		<dependency>
+		    <groupId>org.logback-extensions</groupId>
+		    <artifactId>logback-ext-spring</artifactId>
+		    <version>${logback-ext-spring.version}</version>
 		</dependency>
 
 		<!-- Hibernate -->
@@ -89,6 +100,12 @@
 			<artifactId>hibernate-entitymanager</artifactId>
 			<version>${hibernate.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>${hibernate.validation}</version>
+		</dependency>
+
 
 
 		<!-- Test Artifacts -->
