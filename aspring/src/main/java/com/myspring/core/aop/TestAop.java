@@ -2,6 +2,9 @@ package com.myspring.core.aop;
 
 import org.springframework.aop.framework.ProxyFactory;
 
+import com.myspring.commons.BaseIoc;
+import com.myspring.model.User;
+
 /**
  * @description: TODO
  *
@@ -11,14 +14,16 @@ import org.springframework.aop.framework.ProxyFactory;
  *
  * @version 1.0
  */
-public class TestAop {
+public class TestAop extends BaseIoc {
 	public static void main(String[] args) {
 		TestAop t = new TestAop();
-		t.testAop();
+//		t.testStaticAop();
+//		t.testAspectJByAnnotation();
+		t.aspectjByXml();
 	}
 	
 	
-	public void testAop() {
+	public void testStaticAop() {
 		IHelloWorld target = new IHelloWorldImpl();
 		// create the proxy
 		ProxyFactory pf = new ProxyFactory();
@@ -32,5 +37,25 @@ public class TestAop {
 		target.show();
 		System.out.println("\n=========proxy object==========");
 		proxy.show();
+	}
+	
+	
+	public void testAspectJByAnnotation() {
+		BankService bankService = context.getBean("bankService", BankService.class);
+		bankService.accout();
+	}
+	
+	public void aspectjByXml() {
+		BankService bankService = context.getBean("bankService", BankService.class);
+		User user = new User();
+		bankService.updateAccount(user);
+		bankService.add();
+	}
+	
+	/**
+	 * aspectj和事务管理集成
+	 */
+	public void aspectjWithTx() {
+		
 	}
 }

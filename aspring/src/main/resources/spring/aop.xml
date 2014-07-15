@@ -7,5 +7,28 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
 
+	<aop:aspectj-autoproxy />
 	
+	<bean id="myAspectByXml" class="com.myspring.core.aop.MyAspectByXml"></bean>
+	<aop:config>
+		<aop:aspect id="myAspect" ref="myAspectByXml">
+			<!-- 切点：访问目标函数的集合 -->
+			<aop:pointcut expression="execution(* com.myspring.core.aop.*.*(..))" id="myPointcut"/>
+			<!-- advice -->
+			<aop:before method="beforCall" pointcut-ref="myPointcut"/>
+			<aop:after method="afterCall" pointcut-ref="myPointcut"/>
+			<aop:after-returning method="afterReturningCall" pointcut-ref="myPointcut" returning="rtv"/><!-- 和方法的参数名一致 -->
+			<aop:after-throwing method="afterThrowingCall" pointcut-ref="myPointcut"/>
+			<aop:around method="aroundCall" pointcut-ref="myPointcut"/>
+		</aop:aspect>
+		
+		<!-- 一些方法记录日志，也开启事务，可以为公用的切面TODO -->
+		<!-- <aop:pointcut expression="execution(* com.myspring.core.aop.BankService.update*(..))" id="advisePointcut"/>
+		<aop:advisor advice-ref="txAdvice"/> -->
+	</aop:config>
+	<!-- <tx:advice id="txAdvice">
+		<tx:attributes>
+			<tx:method name="update*" propagation="REQUIRED"/>
+		</tx:attributes>
+	</tx:advice> -->
 </beans>
