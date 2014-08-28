@@ -12,6 +12,13 @@
 		<welcome-file>default.htm</welcome-file>
 		<welcome-file>default.jsp</welcome-file>
 	</welcome-file-list>
+	
+	<jsp-config>
+		<taglib>
+			<taglib-uri>https://github.com/zeng233/mytag</taglib-uri>
+			<taglib-location>/WEB-INF/usertag.tld</taglib-location>
+		</taglib>
+	</jsp-config>
 
 	<!-- 注册 -->
 	<!-- <servlet>
