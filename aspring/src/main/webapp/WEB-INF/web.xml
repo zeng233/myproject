@@ -7,6 +7,13 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 
     <display-name>myspring</display-name>
     
+    <jsp-config>
+		<taglib>
+			<taglib-uri>https://github.com/zeng233/mytag</taglib-uri>
+			<taglib-location>/WEB-INF/tld/usertag.tld</taglib-location>
+		</taglib>
+	</jsp-config>
+    
    <!--
 		- Location of the XML file that defines the root application context.
 		- Applied by ContextLoaderListener.
