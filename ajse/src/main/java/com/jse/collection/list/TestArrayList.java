@@ -21,8 +21,13 @@ public class TestArrayList {
 		
 		List<String > list = null;
 		t.initList(list);
-		list.add("123");//空指针异常
-		System.out.println(list.size());
+//		list.add("123");//空指针异常
+//		System.out.println(list.size());
+		
+		String[] array = new String[]{};
+		for (String s : array) {
+			System.out.println(s);
+		}
 	}
 	
 	/**
