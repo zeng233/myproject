@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../jquery-seed/jquery-1.11.1.js"></script>
+	<script>
+		// $('.test').each(function(index, el) {
+		// 	alert(this);
+		alert($('.test').val());
+			$('.test').click(function(event) {
+				alert(11);
+				if($(this).attr('checked') == 'checked') {
+					$(this).attr('checked', false);
+				} else {
+					$(this).attr('checked', true);
+				}
+				
+			});
+		// });
+	</script>
+</head>
+<body>
+	<input type="checkbox" name="t" class="test" value='1'>
+	<input type="checkbox" name="t" class="test" value='2'>
+</body>
+</html>
