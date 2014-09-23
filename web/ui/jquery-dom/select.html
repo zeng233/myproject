@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>select</title>
+	<script src="../jquery-seed/jquery-1.11.1.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			$('#right').click(function() {
+				var $options = $('#select1 option:selected');//获取当前选中的项  
+	            var $remove = $options.remove();//删除下拉列表中选中的项  
+	            $options.appendTo('#select2');//追加给对方 
+			});
+			$('#rightAll').click(function() {
+				var $options = $('#select1 option');//获取当前选中的项  
+	            $options.appendTo('#select2');//追加给对方 
+			});
+
+			
+
+            $('#getSelected').click(function(event) {
+            	var options = $('#select2 option');
+            	alert(options);
+            	// for (var i = 0; i < options.length; i++) {
+            	// 	alert(options[i]);
+            	// };
+            	$.each(options, function(i, el) {
+	            	alert(i + " : " + el.value);
+	            });
+            });
+		})
+	</script>
+</head>
+<body>
+	<table>
+		<tr>
+			<td>
+				<select id="select1" multiple="multiple" style="width: 150px; height: 200px">
+					<option value="1">a</option>
+					<option value="2">b</option>
+					<option>c</option>
+					<option>e</option>
+					<option>f</option>
+					<option>g</option>
+				</select>
+			</td>
+			<td>
+				<p><input id="right" type="button" value="-->"/></p>
+				<p><input id="rightAll" type="button" value="->>"/></p>
+			</td>
+			<td>
+				<select id="select2" multiple="multiple" style="width: 150px; height: 200px"></select>
+			</td>
+		</tr>
+	</table>
+	<input type="button" value="selected" id="getSelected"/>
+</body>
+</html>

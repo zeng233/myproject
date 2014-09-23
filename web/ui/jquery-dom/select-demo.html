@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>select-demo</title>
+	<script src="../jquery-seed/jquery-1.11.1.js"></script>
+	<script>
+		$(function() {
+			$('#add').click(function(){  
+	            var $options = $('#select1 option:selected');//获取当前选中的项  
+	            var $remove = $options.remove();//删除下拉列表中选中的项  
+	            $remove.appendTo('#select2');//追加给对方  
+	        });  
+	          
+	        $('#remove').click(function(){  
+	            var $removeOptions = $('#select2 option:selected');  
+	            $removeOptions.appendTo('#select1');//删除和追加可以用appendTo()直接完成  
+	        });  
+	          
+	        $('#addAll').click(function(){  
+	            var $options = $('#select1 option');  
+	            $options.appendTo('#select2');  
+	        });  
+	          
+	        $('#removeAll').click(function(){  
+	            var $options = $('#select2 option');  
+	            $options.appendTo('#select1');  
+	        });  
+	          
+	        //双击事件  
+	        $('#select1').dblclick(function(){  
+	            //var $options = $('#select1 option:selected');  
+	            var $options = $('option:selected', this);//注意此处“option”与“:”之间的空格，有空格是不可以的  
+	            $options.appendTo('#select2');  
+	        });  
+	          
+	        $('#select2').dblclick(function(){  
+	            $('#select2 option:selected').appendTo('#select1');  
+	        });  
+	          
+	    });
+	</script>
+</head>
+
+
+  <body>
+    <div class="centent">
+    	<select multiple id="select1" style="width:100px;height:250px;">
+    		<option value="选项一">选项一</option>
+    		<option value="选项二">选项二</option>
+    		<option value="选项三">选项三</option>
+    		<option value="选项四">选项四</option>
+    		<option value="选项五">选项五</option>
+    		<option value="选项六">选项六</option>
+    		<option value="选项七">选项七</option>
+    		<option value="选项八">选项八</option>
+    		<option value="选项九">选项九</option>
+    	</select>
+    	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    	<select multiple id="select2" style="width:100px;height:250px;">
+    		
+    	</select>
+    </div>
+    <div>
+    	<span id="add">选中添加到右边&gt;&gt;</span>
+    	<span id="remove">&lt;&lt;选中添加到左边</span><br>
+    	<span id="addAll">全部添加到右边&gt;&gt;</span>
+    	<span id="removeAll">&lt;&lt;全部添加到左边</span>
+    </div>
+  </body>
+
+</html>

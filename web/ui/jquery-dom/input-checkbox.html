@@ -9,19 +9,17 @@
 			$('input[name="joe"]').each(function(index, el) {
 				$(this).click(function(event) {
 					if($(this).attr('checked') == 'checked') {
-						$(this).removeAttr('checked');
+						$(this).attr('checked', 'checked');
 					} else {
 						$(this).attr('checked', 'checked');
 					}
 				});
 			});
 
-			$('#bt').click(function(event) {
-				$.each($('input[name="joe"]'), function(index, val) {
-					if(val.checked) {
-						alert(val.value);
-					}
-				});
+			$.each($('input[name="joe"]'), function(index, val) {
+				if(val.checked) {
+					alert(val.value);
+				}
 			});
 		});
 	</script>
@@ -29,6 +27,6 @@
 <body>
 	<input type="checkbox" name="joe" class="test" value='1'>
 	<input type="checkbox" name="joe" class="test" value='2'><br>
-	<input id="bt" type="button" value="提交">
+	<input id="" type="button" value="提交">
 </body>
 </html>
