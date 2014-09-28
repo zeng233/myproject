@@ -2,7 +2,6 @@ package com.myspring.web.tag.pagination;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
-import java.util.Enumeration;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -26,30 +25,30 @@ public class PageHandler
 		
 		String url = request.getRequestURI();
 		page.setUrl(url);
-		Enumeration<String> paramNames = request.getParameterNames();
 		Map<String, String[]> paramMap = request.getParameterMap();
 		String encode = request.getCharacterEncoding();
 		if (StringUtils.isBlank(encode)) {
 			encode = "UTF-8";
 		}
 		
-		if (paramNames != null) {
-			while (paramNames.hasMoreElements()) {
-				String paramName = paramNames.nextElement();
-				String[] paramValue = paramMap.get(paramName);
-				if (paramName.equals("url")) {
-					page.setUrl(paramValue[0]);
-				} else if (paramName.equals("currentPage")) {
-					page.setCurrentPage(Integer.parseInt(paramValue[0]));
+		//拼接查询参数
+		for(Map.Entry<String, String[]> entry : paramMap.entrySet()) {
+			if (entry.getValue() != null) {
+				if ("currentPage".equals(entry.getKey())) {
+					page.setCurrentPage(Integer.parseInt(entry.getValue()[0]));
+				} else if ("pageSize".equals(entry.getKey())) {
+					page.setPageSize(Integer.parseInt(entry.getValue()[0]));
 				} else {
-					for (int i = 0; i < paramValue.length; i++) {
-						String key = URLEncoder.encode(paramValue[i], encode);
-						queryString.append(paramName).append("=").append(key).append("&");
-						System.out.println(queryString);
+					String[] paramValues = entry.getValue();
+					for (int i = 0; i < paramValues.length; i++) {
+						String paramValue = URLEncoder.encode(paramValues[i], encode);
+						queryString.append(entry.getKey()).append("=").append(paramValue).append("&");
 					}
 				}
-			}
+ 			}
 		}
-		return null;
+		
+		page.setQueryString(queryString.toString());
+		return page;
 	}
 }
