@@ -10,8 +10,12 @@
 	<!-- controller -->
 	<context:component-scan base-package="com.myspring.web" />
 	<!-- 参数注解器 -->
-	<mvc:annotation-driven />
-	
+	<mvc:annotation-driven>
+		<mvc:argument-resolvers>
+			<bean id="sessionArgResolver" class="com.myspring.web.support.MySpecialArgumentResolver" />
+		</mvc:argument-resolvers>
+	</mvc:annotation-driven>
+		
 	<!-- 参考http://www.iteye.com/topic/1129445 -->
 	<mvc:view-controller path="/WEB-INF/view/" view-name=""/>
 
@@ -26,9 +30,16 @@
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<!-- Example: a logical view name of 'showMessage' is mapped to '/WEB-INF/jsp/showMessage.jsp' -->
-		<!-- <property name="prefix" value="/WEB-INF/view/" /> -->
-		<property name="prefix" value="/view" />
+		<property name="prefix" value="/WEB-INF/view/" />
+		<!-- <property name="prefix" value="/view" /> -->
 		<property name="suffix" value=".jsp" />
 	</bean>
 
+
+	<!-- 自定义参数解析 -->
+	<!-- <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+		<property name="customArgumentResolver" ref="sessionArgResolver" />
+	</bean> -->
+
+	
 </beans>
