@@ -12,6 +12,7 @@ import com.myspring.dao.user.UserDao;
 import com.myspring.model.Room;
 import com.myspring.model.User;
 import com.myspring.service.user.UserService;
+import com.myspring.web.tag.pagination.Page;
 
 /**
  * @description: TODO
@@ -24,12 +25,23 @@ import com.myspring.service.user.UserService;
  */
 public class TestHibernate extends BaseIoc {
 	UserService userService = context.getBean("userService", UserService.class);
+	UserDao userDao = context.getBean("userDao", UserDao.class);
 	
 	public static void main(String[] args) {
 		TestHibernate t = new TestHibernate();
 //		t.testQuery();
 //		t.save();
-		t.insertUserByJdbc();
+		
+//		for (int i = 29; i < 50; i++) {
+//			User user = new User();
+//			user.setUserName("a" + i);
+//			user.setPassword("b" + i);
+//			t.save(user);
+//		}
+		
+//		t.insertUserByJdbc();
+		
+		t.testFindByPage();
 	}
 	
 	public void testQuery() {
@@ -55,11 +67,7 @@ public class TestHibernate extends BaseIoc {
 	}
 	
 	
-	public void save() {
-		User user = new User();
-		user.setUserName("aaa");
-		user.setPassword("ppp");
-		System.out.println(userService);
+	public void save(User user) {
 		userService.save(user);
 		
 //		List<Room> list = userService.query();
@@ -68,5 +76,12 @@ public class TestHibernate extends BaseIoc {
 	
 	public void insertUserByJdbc() {
 		userService.insertUserByJdbc();
+	}
+	
+	public void testFindByPage() {
+		User user = new User();
+		Page page = new Page();
+		List<User> users = userDao.findUserByPage(user, page);
+		System.out.println(users);
 	}
 }
