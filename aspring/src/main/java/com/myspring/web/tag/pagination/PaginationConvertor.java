@@ -5,5 +5,10 @@ package com.myspring.web.tag.pagination;
  */
 public interface PaginationConvertor
 {
+	/**
+	 * 拼写显示分页的html
+	 * @param page
+	 * @return
+	 */
 	String convert(Page page);
 }

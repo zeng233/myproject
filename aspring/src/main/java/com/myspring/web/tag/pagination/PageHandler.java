@@ -48,7 +48,10 @@ public class PageHandler
  			}
 		}
 		
-		page.setQueryString(queryString.toString());
+		if (queryString.length() > 1) {
+			queryString.deleteCharAt(queryString.length() - 1);
+			page.setQueryString(queryString.toString());
+		}
 		return page;
 	}
 }
