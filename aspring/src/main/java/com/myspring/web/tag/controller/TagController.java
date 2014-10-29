@@ -11,7 +11,6 @@ import com.myspring.dao.user.UserDao;
 import com.myspring.model.User;
 import com.myspring.web.support.annotation.MyInject;
 import com.myspring.web.tag.pagination.Page;
-import com.winxuan.framework.pagination.Pagination;
 
 @Controller
 @RequestMapping(value = "/tag")
@@ -25,14 +24,15 @@ public class TagController
 		ModelAndView mv = new ModelAndView("/tag/pageTag");
 //		System.out.println(page);
 		User user = new User();
-		List<User> users = userDao.findUserByPage(user, page);
+//		List<User> users = userDao.findUserByPage(user, page);
+		page.setCount(35);
 		mv.addObject("page", page);
-		mv.addObject("users", users);
+//		mv.addObject("users", users);
 		return mv;
 	}
 	
 	@RequestMapping(value = "/test")
-	public ModelAndView test(User user, @MyInject Pagination pagination) {
+	public ModelAndView test(User user, @MyInject Page pagination) {
 		ModelAndView mv = new ModelAndView("/tag/pageTag");
 		mv.addObject("pagination", pagination);
 		return mv;

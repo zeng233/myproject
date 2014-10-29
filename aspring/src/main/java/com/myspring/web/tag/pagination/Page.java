@@ -1,13 +1,10 @@
 package com.myspring.web.tag.pagination;
 
-import org.neo4j.cypher.internal.compiler.v2_1.perty.docbuilders.scalaDocBuilder;
 
 public class Page
 {
-	private static final int DEFAULT_PAGE_SIZE = 3;
+	private static final int DEFAULT_PAGE_SIZE = 5;
 	private static final int DEFAULT_CURRENT_PAGE = 1;
-	private static final int DEFAULT_SKIP_SIZE = 10;
-	private static final int DEFAULT_CURRENT_SKIP = 1;
 	
 	private String url;
 	private String queryString;//查询参数
@@ -15,12 +12,12 @@ public class Page
 	private int pageCount;//总页数
 	private int currentPage;//当前页
 	private int pageSize;//每页显示条数
-	private int nextPage;//下一页
+//	private int nextPage;//下一页
 	/**
 	 * 跳转页码，如：1 2 3 4 5 6 7 8 9 10
 	 */
-	private int skipSize;
-	private int currentSkip;//当前跳转页码
+//	private int skipSize;
+//	private int currentSkip;//当前跳转页码
 	
 	//记录条数的逻辑位置
 	private int begin;
@@ -37,17 +34,13 @@ public class Page
 		if (currentPage <= 0) {
 			this.currentPage = DEFAULT_CURRENT_PAGE;
 		}
-		if (skipSize <= 0) {
-			this.skipSize = DEFAULT_SKIP_SIZE;
-		}
 		
 		this.currentPage = DEFAULT_CURRENT_PAGE;
 		this.pageSize = DEFAULT_PAGE_SIZE;
-		this.skipSize = DEFAULT_SKIP_SIZE;
 	}
 
 	/**
-	 * 设置
+	 * 设置总条数
 	 * @param count
 	 */
 	public void setCount(int count)
@@ -57,22 +50,23 @@ public class Page
 		}
 		this.count = count;
 		this.pageCount = count / pageSize + (count % pageSize == 0 ? 0 : 1);
-		this.currentSkip = this.currentPage + 1;
-//		this.begin = this.currentPage - 1 * this.pageSize;
+		this.begin = (currentPage - 1) * pageSize;
+		this.end = currentPage * pageSize;
+//		this.currentSkip = this.currentPage + 1;
 	}
 	
-	public int[] getSkipNumbers() {
-		int count = skipSize;
-		//查询总页数小于10，就显示小于10的页码
-		if (currentSkip + skipSize > pageCount) {
-			count = pageCount - currentSkip + 1;
-		}
-		int[] nums = new int[count];
-		for (int i = 0; i < count; i++) {
-			nums[i] = currentSkip + i;
-		}
-		return nums;
-	}
+//	public int[] getSkipNumbers() {
+//		int count = skipSize;
+//		//查询总页数小于10，就显示小于10的页码
+//		if (currentSkip + skipSize > pageCount) {
+//			count = pageCount - currentSkip + 1;
+//		}
+//		int[] nums = new int[count];
+//		for (int i = 0; i < count; i++) {
+//			nums[i] = currentSkip + i;
+//		}
+//		return nums;
+//	}
 	
 	public String getUrl()
 	{
@@ -143,16 +137,6 @@ public class Page
 	public void setCurrentPage(int currentPage)
 	{
 		this.currentPage = currentPage;
-	}
-
-	public int getNextPage()
-	{
-		return nextPage;
-	}
-
-	public void setNextPage(int nextPage)
-	{
-		this.nextPage = nextPage;
 	}
 
 	public int getBegin()

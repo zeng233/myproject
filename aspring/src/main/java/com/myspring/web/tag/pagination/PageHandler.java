@@ -25,6 +25,7 @@ public class PageHandler
 		
 		String url = request.getRequestURI();
 		page.setUrl(url);
+		//参数集合，string[]表示参数相同的参数值（如传checkbox）
 		Map<String, String[]> paramMap = request.getParameterMap();
 		String encode = request.getCharacterEncoding();
 		if (StringUtils.isBlank(encode)) {
