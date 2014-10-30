@@ -52,5 +52,9 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
         <servlet-name>dispatcherServlet</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
-
+	
+	<servlet-mapping>
+       <servlet-name>default</servlet-name>
+       <url-pattern>/scripts/*</url-pattern>
+   </servlet-mapping>
 </web-app>
