@@ -9,10 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.myspring.model.Room;
-import com.myspring.model.Student;
 import com.myspring.model.User;
+import com.myspring.web.tag.pagination.Page;
 
 /**
  * @description: TODO
@@ -71,5 +72,17 @@ public class UserDao {
 		List<User> list = jdbcTemplate.query("select * from t_user t where t.id=?", 
 				new BeanPropertyRowMapper<User>(User.class), 1);
 		return list;
+	}
+	
+	@Transactional
+	public List<User> findUserByPage(User user, Page page) {
+		Session session = sessionFactory.openSession();
+		Query query = session.createQuery("from User");
+//		int count = (int) session.createQuery("select count(1) from User").uniqueResult();
+		query.setFirstResult(page.getCurrentPage());
+		query.setMaxResults(page.getPageSize());
+		List<User> users = query.list();
+		page.setCount(query.list().size());
+		return users;
 	}
 }
