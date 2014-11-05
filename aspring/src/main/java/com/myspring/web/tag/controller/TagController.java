@@ -25,7 +25,7 @@ public class TagController
 //		System.out.println(page);
 		User user = new User();
 //		List<User> users = userDao.findUserByPage(user, page);
-		page.setCount(35);
+		page.setCount(101);
 		mv.addObject("page", page);
 //		mv.addObject("users", users);
 		return mv;

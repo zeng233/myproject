@@ -16,8 +16,8 @@ public class Page
 	/**
 	 * 跳转页码，如：1 2 3 4 5 6 7 8 9 10
 	 */
-//	private int skipSize;
-//	private int currentSkip;//当前跳转页码
+	private int skipSize = 5;
+	private int currentSkip = 1;//当前跳转页码
 	
 	//记录条数的逻辑位置
 	private int begin;
@@ -52,6 +52,10 @@ public class Page
 		this.pageCount = count / pageSize + (count % pageSize == 0 ? 0 : 1);
 		this.begin = (currentPage - 1) * pageSize;
 		this.end = currentPage * pageSize;
+		currentSkip = (currentPage / skipSize) * skipSize + 1;
+		if (currentPage % skipSize == 0){
+			currentSkip = currentSkip - skipSize;	
+		}
 //		this.currentSkip = this.currentPage + 1;
 	}
 	
@@ -157,5 +161,37 @@ public class Page
 	public void setEnd(int end)
 	{
 		this.end = end;
+	}
+	
+	public int getSkipSize()
+	{
+		return skipSize;
+	}
+
+	public void setSkipSize(int skipSize)
+	{
+		this.skipSize = skipSize;
+	}
+
+	public int getCurrentSkip()
+	{
+		return currentSkip;
+	}
+
+	public void setCurrentSkip(int currentSkip)
+	{
+		this.currentSkip = currentSkip;
+	}
+
+	public int[] getSkipPageNums() {
+		int count = skipSize;
+		if (currentSkip + skipSize > pageCount){
+			count = pageCount - currentSkip + 1;	
+		}
+		int[] result = new int[count];
+		for (int i = 0; i < count; i++) {
+			result[i] = currentSkip + i;
+		}
+		return result;
 	}
 }

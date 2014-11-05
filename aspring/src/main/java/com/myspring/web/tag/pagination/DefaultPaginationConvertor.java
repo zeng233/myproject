@@ -52,25 +52,51 @@ public class DefaultPaginationConvertor implements PaginationConvertor
 //			htmlPage.append("<li><a href=\"" + url + nums[i] + "\">" + nums[i] +"</a></li>");
 //		}
 		
+//		int skipSize = 5;
+//		int count = 5;
+//		int currentSkip = (currentPage / 5) * 5 + 1;
+//		if (currentPage % 5 == 0){
+//			currentSkip = currentSkip - 5;	
+//		}
+//		if (currentSkip + 5 > pageCount){
+//			count = pageCount - currentSkip + 1;	
+//		}
+//		int[] pageNums = new int[count];
+//		for (int i = 0; i < count; i++) {
+//			pageNums[i] = currentSkip + i;
+//		}
+		
+		int[] pageNums = page.getSkipPageNums();
+		
+		for (int i = 0; i < pageNums.length; i++) {
+			if (pageNums[i] == currentPage) {
+				htmlPage.append("<li><a style=\"background-color: #5bc0de\">" + pageNums[i] + "</a></li>");
+			} else {
+				htmlPage.append("<li><a href=\"" + url + pageNums[i] + "\">" + pageNums[i] + "</a></li>");
+			}
+		}
+		
+		
+		
 		/**
 		 * 页码
 		 */
-		int startNum = (currentPage-SHOW_NUM) > 1 ? (currentPage-SHOW_NUM) : 1;
-		int endNum = (currentPage + SHOW_NUM) > pageCount ? pageCount
-				: (currentPage + SHOW_NUM);
-		for (int num = startNum; num <= endNum; num++) {
-			//如果有多个页码第一页要显示超链接 TODO
-			if (num == currentPage) {
-				htmlPage.append("<li><a>" + num + "</a></li>");
-			} else {
-				htmlPage.append("<li><a href=\"" + url + num + "\">" + num + "</a></li>");
-			}
-		}
+//		int startNum = (currentPage-SHOW_NUM) > 1 ? (currentPage-SHOW_NUM) : 1;
+//		int endNum = (currentPage + SHOW_NUM) > pageCount ? pageCount
+//				: (currentPage + SHOW_NUM);
+//		for (int num = startNum; num <= endNum; num++) {
+//			//如果有多个页码第一页要显示超链接 TODO
+//			if (num == currentPage) {
+//				htmlPage.append("<li><a>" + num + "</a></li>");
+//			} else {
+//				htmlPage.append("<li><a href=\"" + url + num + "\">" + num + "</a></li>");
+//			}
+//		}
 
 		/**
 		 * 省略
 		 */
-		if (endNum < pageCount) {
+		if (pageNums!=null && pageNums[pageNums.length - 1] < pageCount) {
 			htmlPage.append("<li><a>...</a></li>");
 		}
 		

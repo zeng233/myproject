@@ -10,12 +10,14 @@
 <title>分页标签</title>
 
 <link rel="stylesheet" type="text/css" href="../scripts/bootstrap/css/bootstrap.css" />
+<script type="text/javascript" src="../scripts/jquery/jquery-1.11.1.js"></script>
 <script type="text/javascript" src="../scripts/bootstrap/js/bootstrap.js"></script>
 </head>
 
 <body>
 	<h1>分页标签</h1><br>
 	
+	<a style="background-color: #2a6496">chaolianjie</a>
 	<table>
 		<tr>
 			<td>id</td>
