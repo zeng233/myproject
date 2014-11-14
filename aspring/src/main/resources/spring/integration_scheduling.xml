@@ -1,18 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:task="http://www.springframework.org/schema/task"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:task="http://www.springframework.org/schema/task"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.2.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
 
+	<!-- spring自带的定时器：结合JDK的线程池执行，里面可以配置自己的执行规则 -->
+	<bean id="taskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+		<property name="corePoolSize" value="5" />
+		<property name="maxPoolSize" value="10" />
+		<property name="queueCapacity" value="25" />
+	</bean>
+	<!-- 创建这个标签spring会自动创建ThreadPoolTaskExecutor -->
+	<!-- <task:executor id="executor" pool-size="10"/> -->
+	
+
+	<bean id="springTaskJob" class="com.myspring.integration.schedule.spring.TaskExecutorJob">
+		<constructor-arg ref="taskExecutor" />
+	</bean>
+	
+	<bean id="taskSchedulerJob" class="com.myspring.integration.schedule.spring.TaskSchedulerJob"/>
+	<!-- 创建这个标签spring自动创建ThreadPoolTaskScheduler -->
+	<task:scheduler id="myScheduler" pool-size="10" />
 	<task:scheduled-tasks scheduler="myScheduler">
 		<!-- 参考spring in action 14.4.1 Cron expression -->
-		<!-- <task:scheduled ref="myTaskJob" method="hello" cron="0 0 1 * * * ?"/> -->
-		<task:scheduled ref="myTaskJob" method="hello" cron="0 45 14 * * ?"/>
+		<!-- 指定执行某个方法 -->
+		<task:scheduled ref="taskSchedulerJob" method="hello" cron="0 45 14 * * ?" />
 		<!-- <task:scheduled ref="myTaskJob" method="hello" fixed-delay="1000"/> -->
 	</task:scheduled-tasks>
 	
-	<task:scheduler id="myScheduler" pool-size="10"/>
+	
+	<!-- ============================================================================ -->
+	<!-- 集成quartz -->
+	
 </beans>
