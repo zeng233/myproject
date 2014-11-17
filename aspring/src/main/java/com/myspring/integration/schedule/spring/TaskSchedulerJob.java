@@ -8,5 +8,5 @@ package com.myspring.integration.schedule.spring;
  */
 public class TaskSchedulerJob
 {
-
+	public void hello() {}
 }

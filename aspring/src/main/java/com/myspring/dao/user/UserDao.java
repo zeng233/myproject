@@ -1,5 +1,6 @@
 package com.myspring.dao.user;
 
+import java.io.Serializable;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -25,7 +26,14 @@ import com.myspring.web.tag.pagination.Page;
  * @version 1.0
  */
 @Repository
-public class UserDao {
+public class UserDao implements Serializable {
+	
+	
+/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6388145173922250997L;
+
 //	private HibernateTemplate template;
 	@Autowired
 	private SessionFactory sessionFactory;
@@ -35,9 +43,6 @@ public class UserDao {
 	
 	public void save(User user) {
 //		template.save(user);
-		
-		System.out.println(sessionFactory);
-		
 		Session session = sessionFactory.openSession();
 		session.save(user);
 	}
