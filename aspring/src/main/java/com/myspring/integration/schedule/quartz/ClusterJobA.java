@@ -6,12 +6,10 @@ import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import com.myspring.dao.user.UserDao;
 import com.myspring.model.User;
 
-@Service
 public class ClusterJobA implements Job
 {
 	@Autowired
