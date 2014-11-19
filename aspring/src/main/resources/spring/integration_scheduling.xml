@@ -59,27 +59,34 @@
 		<property name="startupDelay" value="5" />
 		<property name="applicationContextSchedulerContextKey" value="ctx" />
 		<!--可选，QuartzScheduler 启动时更新己存在的Job，这样就不用每次修改targetObject后删除qrtz_job_details表对应记录了 -->
-		<!-- <property name="overwriteExistingJobs" value="true" /> -->
+		<property name="overwriteExistingJobs" value="true" />
 		<!-- 设置自动启动 -->
 		<property name="autoStartup" value="true" />
 		<!-- 注册触发器 -->
 		<property name="triggers">
 			<list>
-				<ref bean="triggerA" />
+				<!-- <ref bean="triggerA" /> -->
+				<ref bean="triggerB" />
 			</list>
 		</property>
 		<!-- 注册jobDetail -->
 		<property name="jobDetails">
 			<list>
-				<ref bean="jobDetailA"/>
+				<!-- <ref bean="jobDetailA"/> -->
+				<ref bean="jobDetailB"/>
 			</list>
 		</property>
 	</bean>
 	
 	<bean id="triggerA" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean"> 
         <property name="jobDetail" ref="jobDetailA"/> 
-        <!-- <property name="cronExpression" value="0/30 * * * * ?"/> -->
         <property name="cronExpression" value="30 * * * * ?"/>
+    </bean> 
+    
+    <bean id="triggerB" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean"> 
+        <property name="jobDetail" ref="jobDetailB"/>
+        <!-- 每分钟的30秒执行一次 -->
+        <property name="cronExpression" value="0/5 * * * * ?"/>
     </bean> 
 	
 	<!-- <bean id="jobA" class="com.myspring.integration.schedule.quartz.ClusterJobA"/> -->
@@ -94,5 +101,18 @@
 			<value>com.myspring.integration.schedule.quartz.ClusterJobA</value>
 		</property>
 		<property name="durability" value="true" />
+	</bean>
+	
+	<bean id="jobDetailB" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass">
+			<value>com.myspring.integration.schedule.quartz.ClusterJobB</value>
+		</property>
+		<property name="durability" value="true" />
+	</bean>
+	
+	<bean id="jobC" class="com.myspring.integration.schedule.quartz.MethodClusterJob"/>
+	<bean id="jobDetailC" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="jobC"></property>
+		<property name="targetMethod" value="query"></property>
 	</bean>
 </beans>
