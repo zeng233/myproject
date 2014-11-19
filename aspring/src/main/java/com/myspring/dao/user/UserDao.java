@@ -61,6 +61,9 @@ public class UserDao implements Serializable {
 //		return sessionFactory;
 //	}
 	
+//	public List<User> queryUserList() {
+//		
+//	}
 	
 	public List<Room> query() {
 		Session session = sessionFactory.openSession();
@@ -73,7 +76,7 @@ public class UserDao implements Serializable {
 		jdbcTemplate.update("insert into t_user(id,username,password) values(null,'a','a')");
 	}
 	
-	public List<User> getUser() {
+	public List<User> getUserList() {
 		List<User> list = jdbcTemplate.query("select * from t_user t where t.id=?", 
 				new BeanPropertyRowMapper<User>(User.class), 1);
 		return list;

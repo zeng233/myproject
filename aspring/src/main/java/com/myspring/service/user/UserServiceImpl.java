@@ -53,7 +53,7 @@ public class UserServiceImpl implements UserService {
 	@Transactional(readOnly = false, propagation = Propagation.NEVER)
 	@Override
 	public List<User> getUser() {
-		List<User> list = userDao.getUser();
+		List<User> list = userDao.getUserList();
 		return list;
 	}
 

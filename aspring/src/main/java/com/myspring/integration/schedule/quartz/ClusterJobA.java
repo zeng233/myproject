@@ -21,7 +21,8 @@ public class ClusterJobA extends QuartzJobBean
 		UserDao userDao = ctx.getBean("userDao", UserDao.class);
 		User user = new User();
 		user.setUserName("job-" + UUID.randomUUID().toString().substring(0, 4));
-		userDao.save(user);
+//		userDao.save(user);
+		System.out.println("jobA：" + user);
 	}
 
 	public ApplicationContext getCtx()

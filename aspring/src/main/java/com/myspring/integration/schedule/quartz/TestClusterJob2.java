@@ -5,7 +5,7 @@ import com.myspring.commons.BaseIoc;
 public class TestClusterJob2 extends BaseIoc {
 	public static void main(String[] args) throws Exception
 	{
-		TestClusterJob t = new TestClusterJob();
+		TestClusterJob2 t = new TestClusterJob2();
 		t.init();
 	}
 	
