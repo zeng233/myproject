@@ -57,9 +57,9 @@
 		<property name="schedulerName" value="CMSscheduler" />
 		<!--必须的，QuartzScheduler 延时启动，应用启动完后 QuartzScheduler 再启动 -->
 		<property name="startupDelay" value="5" />
-		<property name="applicationContextSchedulerContextKey" value="applicationContextKey" />
+		<property name="applicationContextSchedulerContextKey" value="ctx" />
 		<!--可选，QuartzScheduler 启动时更新己存在的Job，这样就不用每次修改targetObject后删除qrtz_job_details表对应记录了 -->
-		<property name="overwriteExistingJobs" value="true" />
+		<!-- <property name="overwriteExistingJobs" value="true" /> -->
 		<!-- 设置自动启动 -->
 		<property name="autoStartup" value="true" />
 		<!-- 注册触发器 -->
@@ -74,14 +74,15 @@
 				<ref bean="jobDetailA"/>
 			</list>
 		</property>
-		<!-- <property name="schedulerListeners">
-			<list>
-				<ref bean="quartzExceptionSchedulerListener" />
-			</list>
-		</property> -->
 	</bean>
 	
-	<bean id="jobA" class="com.myspring.integration.schedule.quartz.ClusterJobA"/>
+	<bean id="triggerA" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean"> 
+        <property name="jobDetail" ref="jobDetailA"/> 
+        <!-- <property name="cronExpression" value="0/30 * * * * ?"/> -->
+        <property name="cronExpression" value="30 * * * * ?"/>
+    </bean> 
+	
+	<!-- <bean id="jobA" class="com.myspring.integration.schedule.quartz.ClusterJobA"/> -->
 	<!-- <bean id="jobDetailA" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
 		<property name="targetObject" ref="jobA"/> 
         <property name="targetMethod" value="run"/> 
@@ -92,23 +93,6 @@
 		<property name="jobClass">
 			<value>com.myspring.integration.schedule.quartz.ClusterJobA</value>
 		</property>
-		<property name="durability" value="true" /> 
+		<property name="durability" value="true" />
 	</bean>
-	
-	 <!-- <bean id="jobDetailA" class="org.springframework.scheduling.quartz.JobDetailBean">  
-        <property name="jobClass">  
-            <value>com.myspring.integration.schedule.quartz.ClusterJobA</value>  
-        </property>  
-        <property name="jobDataAsMap">  
-            <map>  
-                <entry key="targetObject" value="jobA" />  
-                <entry key="targetMethod" value="execute" />  
-            </map>  
-        </property>  
-    </bean> -->
-	
-	<bean id="triggerA" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean"> 
-        <property name="jobDetail" ref="jobDetailA"/> 
-        <property name="cronExpression" value="0/30 0 * * * ?"/>
-    </bean>   
 </beans>

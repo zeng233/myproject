@@ -23,6 +23,7 @@
 	<import resource="dao.xml"/>
 	<import resource="aop.xml"/>
 	<import resource="integration_scheduling.xml"/>
+	<!-- <import resource="quartz.xml"/> -->
 
 	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<!-- <property name="locations" value="classpath:jdbc.properties" /> -->

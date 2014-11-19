@@ -1,7 +1,5 @@
 package com.myspring.integration.schedule.quartz;
 
-import org.quartz.SchedulerException;
-
 import com.myspring.commons.BaseIoc;
 
 public class TestClusterJob2 extends BaseIoc {
@@ -12,6 +10,7 @@ public class TestClusterJob2 extends BaseIoc {
 	}
 	
 	public void init() {
+		//打印出 org.quartz.impl.StdScheduler@5ca1f591 ？ TODO
 		System.out.println(context);
 	}
 }
