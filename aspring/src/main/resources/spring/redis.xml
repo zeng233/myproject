@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+
+	<bean id="poolConfig" class="redis.clients.jedis.JedisPoolConfig">
+        <property name="blockWhenExhausted" value="${redis.blockWhenExhausted}"/>
+        <property name="lifo" value="${redis.lifo}"/>
+        <property name="minIdle" value="${redis.minIdle}"/>
+        <property name="maxIdle" value="${redis.maxIdle}"/>
+        <property name="maxTotal" value="${redis.maxTotal}"/>
+        <property name="maxWaitMillis" value="${redis.maxWaitMillis}"/>
+        <property name="testOnBorrow" value="${redis.testOnBorrow}"/>
+        <property name="testOnReturn" value="${redis.testOnReturn}"/>
+        <property name="testWhileIdle" value="${redis.testWhileIdle}"/>
+        <property name="numTestsPerEvictionRun" value="${redis.numTestsPerEvictionRun}"/>
+        <property name="timeBetweenEvictionRunsMillis" value="${redis.timeBetweenEvictionRunsMillis}"/>
+    </bean>
+    
+    <bean id = "jedisPool" class="redis.clients.jedis.JedisPool">  
+          <constructor-arg index="0" ref="poolConfig"/>  
+          <constructor-arg index="1" value="${redis.host}"/>  
+          <constructor-arg index="2" value="${redis.port}" type="int"/>  
+          <!-- <constructor-arg index="3" value="${redis.timeout}" type="int"/> -->  
+          <!-- <constructor-arg index="4" value="${redis.password}"/> -->  
+      </bean>  
+    
+    <!-- <bean id="shards1" class="redis.clients.jedis.JedisShardInfo">
+		<constructor-arg index="0" value="${redis.host}" />
+		<constructor-arg index="1" value="${redis.port}" />
+	</bean>
+    
+    <bean id="shardedJedisPool" class="redis.clients.jedis.ShardedJedisPool">
+		<constructor-arg index="0" ref="poolConfig" />
+		<constructor-arg index="1">
+			<list>
+				<ref bean="shards1" />
+			</list>
+		</constructor-arg>
+	</bean> -->
+</beans>
