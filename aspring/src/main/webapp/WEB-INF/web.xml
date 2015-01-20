@@ -26,6 +26,11 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
         <param-name>contextConfigLocation</param-name>
         <param-value>classpath:spring/application-config.xml</param-value>
     </context-param>
+    
+    <context-param>
+	    <param-name>httl.properties</param-name>
+	    <param-value>classpath:templates/httl.properties</param-value>
+	</context-param>
 
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>

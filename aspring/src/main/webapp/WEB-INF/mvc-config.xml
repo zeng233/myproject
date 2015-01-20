@@ -31,15 +31,17 @@
 	<mvc:resources mapping="/styles/**" location="/styles/" />
 	<mvc:resources mapping="/scripts/**" location="/scripts/" />
 
-	<bean
-		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<!-- Example: a logical view name of 'showMessage' is mapped to '/WEB-INF/jsp/showMessage.jsp' -->
+	<!-- <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/view/" />
-		<!-- <property name="prefix" value="/view" /> -->
 		<property name="suffix" value=".jsp" />
-	</bean>
-
-
+	</bean> -->
+	
+	<!-- 集成httl模板 -->
+	<bean id="viewResolver" class="httl.web.springmvc.HttlViewResolver">
+		<property name="suffix" value=".httl"/>
+        <property name="contentType" value="text/html; charset=UTF-8" />
+    </bean>
+	
 	<!-- 自定义参数解析 -->
 	<!-- <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
 		<property name="customArgumentResolver" ref="sessionArgResolver" />

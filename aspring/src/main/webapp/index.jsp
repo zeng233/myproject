@@ -16,5 +16,6 @@
 		
 		pageContext.request: ${pageContext.request }<br>
 		pageContext.request.contextPath: ${pageContext.request.contextPath}
+		sessionId: <%=request.getSession().getId()%>
 	</body>
 </html>
