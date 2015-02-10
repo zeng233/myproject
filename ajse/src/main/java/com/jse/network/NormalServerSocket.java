@@ -1,8 +1,8 @@
 package com.jse.network;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Date;
@@ -19,22 +19,26 @@ public class NormalServerSocket
 {
 	public static void main(String[] args)
 	{
+		
 		try {
 			ServerSocket server = new ServerSocket(99);
 			Socket socket;
 			
 			while (true) {
 				socket = server.accept();
-//				InputStream input = socket.getInputStream();
+				InputStream input = socket.getInputStream();
 				OutputStream output = socket.getOutputStream();
 				
-//				String clientMessage = getInput(input);
-//				System.out.println("clientMessage is : " + clientMessage);
+				
+				String clientMessage = getInput(input);
+				System.out.println("clientMessage is : " + clientMessage);
 				System.out.println(output);
 				output.write(("server has received message!" + new Date().toString()).getBytes());
 //				output.close();
 				
-				Thread.sleep(3000);
+//				PrintWriter pw = new PrintWriter(output);
+//				pw.print("server");
+//				Thread.sleep(3000);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -47,16 +51,16 @@ public class NormalServerSocket
 	 * @return
 	 */
 	public static String getInput(InputStream input) {
-		int count = 0;
+		int count = 1024;
 		
 		if (input != null) {
 			try {
-				while (count == 0) {
-					count = input.available();
-				}
+//				while (count == 0) {
+//					count = input.available();
+//				}
 				byte[] buffer = new byte[count];
 				input.read(buffer);
-				input.close();
+//				input.close();
 				return new String(buffer).toString();
 			} catch (Exception e) {
 				e.printStackTrace();
