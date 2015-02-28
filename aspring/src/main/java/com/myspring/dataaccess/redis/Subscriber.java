@@ -15,6 +15,7 @@ public class Subscriber extends BaseIoc {
 		JedisPool jedisPool = context.getBean("jedisPool", JedisPool.class);
 //		JedisPool jedisPool = new JedisPool(new JedisPoolConfig(), "10.28.6.152");
 		Jedis jedis = jedisPool.getResource();
-		jedis.psubscribe(new KeyExpriedListener(), "__key*__:*");//模式匹配
+//		jedis.psubscribe(new KeyExpriedListener(), "__key*__:*");//模式匹配
+		jedis.psubscribe(new KeyExpriedListener(), "notify*");//模式匹配
 	}
 }
