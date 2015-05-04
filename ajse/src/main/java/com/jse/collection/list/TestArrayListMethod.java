@@ -15,7 +15,8 @@ import java.util.List;
 public class TestArrayListMethod {
 	public static void main(String[] args) {
 		TestArrayListMethod t = new TestArrayListMethod();
-		t.testAddALL();
+//		t.testAddALL();
+		t.testRemove();
 	}
 	
 	public void testAddALL() {
@@ -32,4 +33,21 @@ public class TestArrayListMethod {
 			System.out.println(s);
 		}
  	}
+	
+	/**
+	 * 参考：http://www.importnew.com/11038.html
+	 */
+	public void testRemove() {
+		List<Long> list = new ArrayList<Long>();
+		list.add(1L);
+		list.add(2L);
+		list.add(3L);
+		for (Long e : list) {
+			if (e == 3L) {
+				list.remove(e);
+			}
+		}
+		
+		System.out.println(list);
+	}
 }
