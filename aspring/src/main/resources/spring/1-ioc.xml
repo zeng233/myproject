@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jee="http://www.springframework.org/schema/jee" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xsi:schemaLocation="http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"
+	default-autowire="byName">
+
+	<bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<!-- <property name="locations" value="classpath:jdbc.properties" /> -->
+		<!-- 配置多个资源文件 -->
+		<property name="locations">
+			<list>
+				<value>classpath:jdbc.properties</value>
+			</list>
+		</property>
+	</bean>
+
+
+	<!-- IOC继承关系 -->
+	<bean id="parent" abstract="true" class="com.myspring.model.CollectionObject">
+		<property name="list">
+			<list>
+				<value>lista</value>
+				<value>listb</value>
+			</list>
+		</property>
+	</bean>
+	<bean id="child" parent="parent">
+		<property name="list">
+			<list merge="true">
+				<value>listc</value>
+				<value>listd</value>
+			</list>
+		</property>
+	</bean>
+
+
+	<bean id="c" class="com.myspring.model.CollectionObject" c:name="c构造函数注入" />
+
+	<bean id="singleton" class="com.myspring.model.Singleton" scope="singleton" />
+	<bean id="prototype" class="com.myspring.model.Prototype" scope="prototype" />
+
+
+	<!-- 自定义bean -->
+	<bean id="myInitBean" class="com.myspring.core.ioc.bean.MyInitBean"></bean>
+	<bean id="initBeanInXml" class="com.myspring.core.ioc.bean.InitBeanInXml"
+		init-method="myInit"></bean>
+		
+</beans>

@@ -64,8 +64,8 @@ public class TestIoc {
 		//LocalSessionFactoryBean实现的FactoryBean接口，返回的对象为getObject()获取的对象
 		System.out.println(context.getBean("sessionFactory", SessionFactory.class)); 
 		
-		HibernateTransactionManager t = context.getBean("hibernateTxManager", HibernateTransactionManager.class);
-		System.out.println(t.getSessionFactory());
+//		HibernateTransactionManager t = context.getBean("hibernateTxManager", HibernateTransactionManager.class);
+//		System.out.println(t.getSessionFactory());
 		
 		JdbcTemplate jdbcTemplate = context.getBean("jdbcTemplate", JdbcTemplate.class);
 		System.out.println(jdbcTemplate);

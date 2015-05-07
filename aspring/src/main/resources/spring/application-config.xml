@@ -20,49 +20,10 @@
 	</context:component-scan>
 
 	<!-- 引入其他资源文件 -->
-	<import resource="dao.xml"/>
+	<import resource="1-ioc.xml"/>
+	<import resource="3-dao.xml"/>
 	<import resource="aop.xml"/>
 	<!-- <import resource="integration_scheduling.xml"/> -->
 	<!-- <import resource="quartz.xml"/> -->
 	<import resource="redis.xml"/>
-
-	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-		<!-- <property name="locations" value="classpath:jdbc.properties" /> -->
-		<!-- 配置多个资源文件 -->
-		<property name="locations">
-			<list>
-				<value>classpath:jdbc.properties</value>
-			</list>
-		</property>
-	</bean>
-
-
-	<!-- IOC继承关系 -->
-	<bean id="parent" abstract="true" class="com.myspring.model.CollectionObject">
-		<property name="list">
-			<list>
-				<value>lista</value>
-				<value>listb</value>
-			</list>
-		</property>
-	</bean>
-	<bean id="child" parent="parent">
-		<property name="list">
-			<list merge="true">
-				<value>listc</value>
-				<value>listd</value>
-			</list>
-		</property>
-	</bean>
-	
-	
-	<bean id="c" class="com.myspring.model.CollectionObject" c:name="c构造函数注入"/>
-	
-	<bean id="singleton" class="com.myspring.model.Singleton" scope="singleton"/>
-	<bean id="prototype" class="com.myspring.model.Prototype" scope="prototype"/>
-	
-	
-	<!-- 自定义bean -->
-	<bean id="myInitBean"  class="com.myspring.core.ioc.bean.MyInitBean"></bean>
-	<bean id="initBeanInXml" class="com.myspring.core.ioc.bean.InitBeanInXml" init-method="myInit"></bean>
 </beans>
