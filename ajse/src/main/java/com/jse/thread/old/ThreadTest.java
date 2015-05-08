@@ -1,4 +1,4 @@
-package com.jse.thread;
+package com.jse.thread.old;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -16,8 +16,8 @@ import java.util.concurrent.ScheduledExecutorService;
 public class ThreadTest {
 	public static void main(String[] args) {
 		ThreadTest t = new ThreadTest();
-		t.oldMethod();
-//		t.enhanceMehod();
+//		t.oldMethod();
+		t.enhanceMehod();
 		System.out.println("this is main");
 	}
 	
