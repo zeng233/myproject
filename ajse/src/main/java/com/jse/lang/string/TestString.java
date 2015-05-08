@@ -1,4 +1,4 @@
-package com.jse.lang;
+package com.jse.lang.string;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -44,10 +44,11 @@ public class TestString {
 //		t.testFormat();
 		
 //		t.testRex();
-		t.testEquals();
+//		t.testEquals();
 		
 //		t.testContains();
 //		t.joinString();
+		t.trim();
 	}
 	
 	public void testContains() {
@@ -145,6 +146,11 @@ public class TestString {
 		String slash = "sajfl\\sdf";
 		//TODO未替换成功(搞明白\转义，参考Pattern api文档，以及规范)
 		System.out.println(slash.replaceAll("\\\\", "\\\\"));
+	}
+	
+	public void trim() {
+		String s = null;
+		System.out.println(s.trim());
 	}
 	
 	public void tString(String s) {
