@@ -1,4 +1,4 @@
-package com.jse.enhance.testenum;
+package com.jse.enhance.enum1;
 
 import java.util.EnumSet;
 

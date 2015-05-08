@@ -1,4 +1,4 @@
-package com.jse.enhance.testenum;
+package com.jse.enhance.enum1;
 
 /**
  * description: 测试枚举类型基本使用,7中常见的用法
