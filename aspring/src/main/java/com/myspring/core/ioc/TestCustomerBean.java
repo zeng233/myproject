@@ -1,6 +1,5 @@
 package com.myspring.core.ioc;
 
-import com.myspring.commons.BaseIoc;
 import com.myspring.core.ioc.bean.InitBeanInXml;
 import com.myspring.core.ioc.bean.MyInitBean;
 
@@ -13,7 +12,7 @@ import com.myspring.core.ioc.bean.MyInitBean;
  *
  * @version 1.0
  */
-public class TestCustomerBean extends BaseIoc {
+public class TestCustomerBean extends BaseIoc1 {
 	public static void main(String[] args) {
 		TestCustomerBean t = new TestCustomerBean();
 		t.testInit();

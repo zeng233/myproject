@@ -13,7 +13,7 @@
 	default-autowire="byName">
 	
 	<!-- 5.10 Classpath scanning and managed components -->
-	<context:component-scan base-package="com.myspring" >
+	<context:component-scan base-package="com.myspring.core.ioc" >
 		<!-- 排除或者包含注解，参考Using filters to customize scanning -->
 		<!-- <context:exclude-filter type="annotation" expression=""/>
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Repository"/> -->

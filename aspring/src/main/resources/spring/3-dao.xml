@@ -20,6 +20,13 @@
 		<property name="username" value="${jdbc.username}" />
 		<property name="password" value="${jdbc.password}" />
 	</bean>
+	<bean id="dataSource2" destroy-method="close"
+		class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="${jdbc2.driverClassName}" />
+		<property name="url" value="${jdbc2.url}" />
+		<property name="username" value="${jdbc2.username}" />
+		<property name="password" value="${jdbc2.password}" />
+	</bean>
 	<!-- id与set方法的参数一致，参考JdbcDao -->
 	<bean id="jdbcDataSource" destroy-method="close"
 		class="org.apache.commons.dbcp.BasicDataSource">
@@ -68,6 +75,7 @@
 		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
+	<!-- 使用注解方式实现事务控制 -->
 	<tx:annotation-driven transaction-manager="transactionManager"
 		proxy-target-class="true" />
 
