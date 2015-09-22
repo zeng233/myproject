@@ -1,6 +1,7 @@
 package com.jse.block.loop;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
@@ -42,5 +43,20 @@ public class TestFor {
 		for (Iterator<String> s=names.iterator(); s.hasNext();) {
 			System.out.println(s.next());
 		}
+		
+		
+		
+		
+		
+		TestFor t = new TestFor();
+		t.testForEach();
+	}
+	
+	public void testForEach() {
+	    List<Integer> list = new ArrayList<Integer>();
+	    Collections.addAll(list, 1, 2, 3);
+	    for (Integer i : list) {
+	        System.out.println("===============" + i);
+	    }
 	}
 }
