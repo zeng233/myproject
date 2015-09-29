@@ -135,14 +135,14 @@ public class TestString {
 	/**
 	 * 注意Sting有几个方法，传参用的正则表达式，如：replaceAll,
 	 * 
-	 * 使用|切割后的数组是单个的
+	 * 使用|切割后的数组是单个的,查看split方法，解释到|属于".$|()[{^?*+\\"里面的一种，会全部分割成单个字符
 	 */
 	public void testRex() {
 		String s = "20100102377892";
 		System.out.println(s.replaceAll("\\s", "','"));
 		
-		String orders = "2013:2014";//如果换成2013|2014，使用|分割，数组里面全是单个字符 TODO
-		String[] array = orders.split(":");
+		String orders = "2013|2014";
+		String[] array = orders.split("|");
 		List<String> list = Arrays.asList(array);
 		System.out.println(list.size());
 		System.out.println(ReflectionToStringBuilder.toString(list));
