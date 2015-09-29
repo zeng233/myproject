@@ -7,6 +7,7 @@ import java.util.Collections;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 
 /**
  * @description: 值传递、引用传递
@@ -43,12 +44,12 @@ public class TestString {
 		
 //		t.testFormat();
 		
-//		t.testRex();
+		t.testRex();
 //		t.testEquals();
 		
 //		t.testContains();
 //		t.joinString();
-		t.trim();
+//		t.trim();
 	}
 	
 	public void testContains() {
@@ -132,16 +133,19 @@ public class TestString {
 	}
 	
 	/**
-	 * 注意Sting有几个方法，传参用的正则表达式，如：replaceAll
+	 * 注意Sting有几个方法，传参用的正则表达式，如：replaceAll,
+	 * 
+	 * 使用|切割后的数组是单个的
 	 */
 	public void testRex() {
 		String s = "20100102377892";
 		System.out.println(s.replaceAll("\\s", "','"));
 		
-		String orders = "2013 2014";
-		String[] array = orders.split("\\s");
+		String orders = "2013:2014";//如果换成2013|2014，使用|分割，数组里面全是单个字符 TODO
+		String[] array = orders.split(":");
 		List<String> list = Arrays.asList(array);
 		System.out.println(list.size());
+		System.out.println(ReflectionToStringBuilder.toString(list));
 		
 		String slash = "sajfl\\sdf";
 		//TODO未替换成功(搞明白\转义，参考Pattern api文档，以及规范)
